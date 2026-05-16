@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Business Radar | 금융·경제·ESG 뉴스 대시보드</title>
+  <style>
+    :root {
+      --bg: #07090f;
+      --panel: rgba(22, 25, 35, 0.78);
+      --panel-2: rgba(30, 34, 46, 0.88);
+      --text: #f3f6fb;
+      --muted: #9ca8bd;
+      --line: rgba(255,255,255,.10);
+      --green: #30d158;
+      --red: #ff453a;
+      --yellow: #ffd60a;
+      --blue: #0a84ff;
+      --purple: #bf5af2;
+      --glass: blur(22px);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(10,132,255,.23), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(191,90,242,.20), transparent 22%),
+        radial-gradient(circle at 50% 100%, rgba(48,209,88,.09), transparent 34%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .app {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      border-right: 1px solid var(--line);
+      background: rgba(8, 10, 16, .72);
+      backdrop-filter: var(--glass);
+      padding: 22px;
+      overflow: auto;
+    }
+
+    main {
+      padding: 26px 34px 48px;
+      overflow: hidden;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: .03em;
+    }
+
+    .orb {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #0a84ff, #30d158 55%, #ffd60a);
+      box-shadow: 0 10px 30px rgba(10,132,255,.35);
+    }
+
+    .search {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 13px 14px;
+      outline: none;
+      font-size: 14px;
+      margin: 6px 0 18px;
+    }
+    .search::placeholder { color: #728096; }
+
+    .section-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 18px 0 10px;
+    }
+
+    .watch-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      padding: 14px 12px;
+      margin-bottom: 8px;
+      border-radius: 17px;
+      border: 1px solid transparent;
+      background: rgba(255,255,255,.045);
+      cursor: pointer;
+      transition: .18s ease;
+    }
+    .watch-item:hover, .watch-item.active {
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.13);
+      transform: translateY(-1px);
+    }
+    .watch-meta b {
+      display: block;
+      font-size: 15px;
+      letter-spacing: -.02em;
+    }
+    .watch-meta small {
+      display: block;
+      color: var(--muted);
+      margin-top: 4px;
+      font-size: 12px;
+    }
+    .pill {
+      align-self: center;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .up { color: var(--green); }
+    .flat { color: var(--yellow); }
+    .down { color: var(--red); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: var(--panel);
+      backdrop-filter: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .market-card {
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+    .market-card::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -130px;
+      top: -170px;
+      background: radial-gradient(circle, rgba(10,132,255,.22), transparent 65%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .market-card h2 {
+      margin: 10px 0 10px;
+      font-size: clamp(34px, 6vw, 72px);
+      line-height: .9;
+      letter-spacing: -.07em;
+    }
+    .lead {
+      color: #dce5f5;
+      font-size: 17px;
+      line-height: 1.65;
+      max-width: 900px;
+      margin: 0;
+    }
+    .headline-tape {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+    .tape {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      border-radius: 999px;
+      padding: 9px 12px;
+      color: #dbe5f3;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .snapshot {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .snapshot h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      letter-spacing: -.03em;
+    }
+    .spark {
+      width: 100%;
+      height: 122px;
+      margin: 8px 0 14px;
+    }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.055);
+      border-radius: 18px;
+      padding: 12px;
+    }
+    .metric strong { display:block; font-size: 22px; letter-spacing: -.04em; }
+    .metric span { color: var(--muted); font-size: 12px; font-weight: 700; }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin: 18px 0 20px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.055);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .tab.active { background: #f3f6fb; color: #10131b; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .country-card {
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .country-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .country-title h3 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -.04em;
+    }
+    .country-title p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .badge {
+      width: max-content;
+      height: fit-content;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      color: #091016;
+      background: var(--green);
+      white-space: nowrap;
+    }
+    .badge.risk-medium { background: var(--yellow); }
+    .badge.risk-high { background: var(--red); color: white; }
+    .badge.risk-watch { background: var(--blue); color: white; }
+
+    .mini-chart {
+      height: 76px;
+      margin: 6px 0 16px;
+      opacity: .95;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      padding: 8px;
+    }
+    .mini-chart svg { width: 100%; height: 100%; }
+
+    .triad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .lens {
+      background: rgba(255,255,255,.052);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 13px;
+      min-height: 146px;
+    }
+    .lens b {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 999px; display: inline-block; }
+    .dot.fin { background: var(--blue); }
+    .dot.eco { background: var(--yellow); }
+    .dot.esg { background: var(--green); }
+    .lens p {
+      margin: 0;
+      color: #d8e1ef;
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    .implication {
+      border-left: 3px solid var(--blue);
+      padding: 10px 12px;
+      background: rgba(10,132,255,.08);
+      border-radius: 0 14px 14px 0;
+      color: #e8f1ff;
+      line-height: 1.55;
+      font-size: 13.5px;
+      margin: 12px 0 14px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 12px;
+    }
+    .links a {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.055);
+      color: #eaf2ff;
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      transition: .16s ease;
+    }
+    .links a:hover { background: rgba(255,255,255,.14); transform: translateY(-1px); }
+
+    .bottom {
+      margin-top: 18px;
+      padding: 22px;
+    }
+    .bottom h3 { margin: 0 0 12px; font-size: 22px; letter-spacing: -.03em; }
+    .insight-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .insight {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      border-radius: 18px;
+      padding: 15px;
+      line-height: 1.55;
+      color: #dce5f5;
+      font-size: 14px;
+    }
+    .insight b { display: block; color: white; margin-bottom: 6px; }
+
+    .footer {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      margin-top: 20px;
+      padding: 0 4px;
+    }
+
+    @media (max-width: 1180px) {
+      .app { grid-template-columns: 1fr; }
+      aside { position: relative; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .watchlist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .watch-item { margin-bottom: 0; }
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      main { padding: 18px 16px 36px; }
+      aside { padding: 18px 16px; }
+      .grid, .triad, .insight-list, .metric-row, .watchlist { grid-template-columns: 1fr; }
+      .market-card h2 { font-size: 48px; }
+      .lens { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <div class="brand">
+        <div>
+          <h1>Global<br/>Business Radar</h1>
+          <span>FINANCE · ECONOMY · ESG</span>
+        </div>
+        <div class="orb" aria-hidden="true"></div>
+      </div>
+
+      <input class="search" id="searchInput" placeholder="국가·키워드 검색" />
+      <div class="section-label">Watchlist</div>
+      <div class="watchlist" id="watchlist"></div>
+
+      <div class="section-label">Update Mode</div>
+      <div class="insight" style="font-size:13px">
+        <b>주간 업데이트형 구조</b>
+        본 파일은 정적 HTML입니다. 실제 자동 업데이트는 RSS/뉴스 API 또는 내부 수집 배치와 연결하면 동일 UI에 자동 반영되도록 설계 가능합니다.
+      </div>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <div class="card market-card">
+          <div class="eyebrow">2026.05.16 기준 · 글로벌 사업 모니터링</div>
+          <h2>국가별 비즈니스 뉴스</h2>
+          <p class="lead">
+            맥북 ‘주식정보’ 앱의 다크 카드형 UX를 차용해, 오가닉 점포와 인오가닉 법인의 핵심 뉴스를
+            금융·경제·ESG 관점으로 빠르게 비교할 수 있도록 구성했습니다. 경영진 보고용으로는
+            “사업 영향 / 리스크 / 후속 체크” 중심으로 읽으면 됩니다.
+          </p>
+          <div class="headline-tape">
+            <div class="tape">일본: NBFI·투자펀드 리스크</div>
+            <div class="tape">미국: 은행 자본규제 완화 논의</div>
+            <div class="tape">영국: Ring-fencing 개편</div>
+            <div class="tape">베트남: 성장률 둔화·전력 수요</div>
+            <div class="tape">캄보디아: 녹색금융 Taxonomy</div>
+            <div class="tape">인니: 금융시장 신뢰·OJK 개혁</div>
+          </div>
+        </div>
+
+        <div class="card snapshot">
+          <div>
+            <div class="eyebrow">Portfolio Snapshot</div>
+            <h3>전체 판단</h3>
+            <p class="lead" style="font-size:14px">
+              미국·영국은 규제완화, 일본·중국은 금융시스템 리스크 관리, 동남아는 성장 둔화 속
+              에너지·신용 리스크가 핵심입니다. ESG는 “공시/분류체계/전력·기후 리스크”로 실무화되는 흐름입니다.
+            </p>
+          </div>
+          <svg class="spark" viewBox="0 0 360 120" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#30d158" stop-opacity=".60"/>
+                <stop offset="100%" stop-color="#30d158" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,92 C40,88 52,36 96,48 C138,60 145,72 188,55 C229,39 241,22 281,34 C317,44 327,68 360,50 L360,120 L0,120 Z" fill="url(#g)"></path>
+            <path d="M0,92 C40,88 52,36 96,48 C138,60 145,72 188,55 C229,39 241,22 281,34 C317,44 327,68 360,50" fill="none" stroke="#30d158" stroke-width="4" stroke-linecap="round"></path>
+          </svg>
+          <div class="metric-row">
+            <div class="metric"><strong>8</strong><span>대상 국가/법인</span></div>
+            <div class="metric"><strong>3</strong><span>분석 렌즈</span></div>
+            <div class="metric"><strong>20+</strong><span>기사·자료 링크</span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="tabs">
+        <button class="tab active" data-filter="all">전체</button>
+        <button class="tab" data-filter="organic">오가닉</button>
+        <button class="tab" data-filter="inorganic">인오가닉</button>
+        <button class="tab" data-filter="high">리스크 높음</button>
+        <button class="tab" data-filter="esg">ESG 이슈</button>
+      </div>
+
+      <section class="grid" id="countryGrid"></section>
+
+      <section class="card bottom">
+        <h3>글로벌 전체 요약</h3>
+        <div class="insight-list">
+          <div class="insight">
+            <b>① 금융: 규제 완화와 리스크 관리가 동시 진행</b>
+            미국·영국은 은행 자본/구조 규제 완화가 성장지원 논리로 부상했습니다. 반면 일본·중국·인도네시아는
+            비은행금융, 금융감독, 시장 투명성 중심의 리스크 관리가 강화되는 흐름입니다.
+          </div>
+          <div class="insight">
+            <b>② 경제: 에너지 가격·외부수요가 공통 변수</b>
+            베트남·일본·미얀마·APAC 은행권은 유가와 전력·물류 비용에 민감합니다. 글로벌 점포는 환율·금리·전력 안정성,
+            외화 유동성, 현지 조달비용을 함께 모니터링해야 합니다.
+          </div>
+          <div class="insight">
+            <b>③ ESG: 구호가 아니라 분류체계·공시·리스크로 전환</b>
+            미국은 ESG 후퇴 압력이 크지만 캄보디아는 녹색금융 taxonomy를 도입했습니다. ESG는 이제 평판이 아니라
+            여신분류, 공시, 전력·기후 리스크, 고객보호 관점의 운영통제로 연결됩니다.
+          </div>
+        </div>
+      </section>
+
+      <p class="footer">
+        ※ 본 대시보드는 공개 기사·기관자료를 요약한 참고용입니다. 주가·환율·금리 실시간 데이터는 포함하지 않았으며,
+        내부 의사결정에는 현지 법규, 감독당국 자료, 법무·준법 검토가 추가로 필요합니다.
+      </p>
+    </main>
+  </div>
+
+<script>
+const DATA = [
+  {
+    id: "japan",
+    group: "organic",
+    symbol: "JPN.TOK",
+    title: "일본 · 도쿄",
+    status: "관찰",
+    risk: "risk-medium",
+    trend: "flat",
+    tags: ["finance", "economy", "esg"],
+    finance: "BOJ는 투자펀드·해외 헤지펀드·PE 등 NBFI 활동 확대가 은행 익스포저와 시장 변동성을 통해 금융시스템 리스크로 전이될 수 있다고 경고했습니다.",
+    economy: "에너지 가격 부담 완화를 위한 추경 가능성이 거론되고 있어 물가 부담 완화와 재정건전성 부담이 동시에 부각됩니다.",
+    esg: "고유가·전력비 부담은 단기적으로 소비자 보호 정책을, 중장기적으로는 에너지 효율·전환금융 수요를 자극할 수 있습니다.",
+    implication: "도쿄 거점은 금리·채권 변동성, 일본 은행권의 대체투자 익스포저, 에너지 물가 대응정책을 함께 체크해야 합니다.",
+    links: [
+      ["BOJ 투자펀드 리스크", "https://www.reuters.com/sustainability/boards-policy-regulation/boj-warns-financial-system-risks-investment-fund-activity-2026-05-15/"],
+      ["BOJ 금융시스템 보고서", "https://www.boj.or.jp/en/research/brp/fsr/fsr260421.htm"],
+      ["일본 에너지 추경 검토", "https://www.reuters.com/world/asia-pacific/japan-is-considering-extra-budget-cushion-energy-inflation-kyodo-says-2026-05-14/"]
+    ],
+    spark: "M0,48 C30,42 42,20 74,28 C105,36 112,59 148,50 C185,40 199,23 229,34 C260,45 280,61 320,38"
+  },
+  {
+    id: "us",
+    group: "organic",
+    symbol: "USA.NY",
+    title: "미국 · 뉴욕",
+    status: "기회/규제",
+    risk: "risk-watch",
+    trend: "up",
+    tags: ["finance", "economy", "esg"],
+    finance: "은행권은 신용카드 미사용 한도·GSIB surcharge 등 자본규제 완화를 요구하고 있으며, 규제기관도 자본 프레임워크 현대화 제안을 진행 중입니다.",
+    economy: "금리 고착과 장단기 국채금리 부담은 은행 조달비용·신용공급·기업투자 심리에 영향을 줄 수 있습니다.",
+    esg: "SEC의 기후공시 규칙 후퇴 움직임과 ESG 주주제안 감소로 미국은 지속가능금융의 정치적 변동성이 큰 시장입니다.",
+    implication: "뉴욕 거점은 자본규제 완화가 대형은행 수익성에는 긍정이나, ESG·기후공시 변화는 글로벌 공시 일관성 측면의 리스크로 봐야 합니다.",
+    links: [
+      ["Fed 자본규제 제안", "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260319a.htm"],
+      ["Wall Street 자본규제 로비", "https://www.reuters.com/sustainability/boards-policy-regulation/wall-street-banks-plan-final-push-capital-rules-2026-05-07/"],
+      ["미국 ESG 주주제안 감소", "https://www.reuters.com/legal/government/us-esg-shareholder-resolutions-plunge-face-republican-pressure-report-says-2026-04-16/"],
+      ["SEC 기후공시 후퇴 움직임", "https://www.reuters.com/legal/government/wall-street-regulator-moves-scrap-biden-era-climate-rule-2026-05-05/"]
+    ],
+    spark: "M0,60 C28,54 48,40 82,43 C118,47 130,24 160,29 C190,34 208,18 240,24 C280,30 294,48 320,32"
+  },
+  {
+    id: "uk",
+    group: "organic",
+    symbol: "UK.LON",
+    title: "영국 · 런던",
+    status: "규제완화",
+    risk: "risk-watch",
+    trend: "up",
+    tags: ["finance", "economy", "esg"],
+    finance: "영국 정부는 은행의 ring-fencing 제도 개편을 추진해 리테일·투자은행 간 서비스 공유와 기업대출 경쟁 확대를 유도하려는 방향입니다.",
+    economy: "규제완화는 은행 운영비 절감과 SME 금융공급 확대 논리이나, 금융안정성 훼손 여부가 핵심 쟁점입니다.",
+    esg: "전력가격의 가스가격 연동 약화를 추진하는 에너지 시장 개편은 소비자 요금 안정과 재생에너지 계약구조 재편에 영향을 줄 수 있습니다.",
+    implication: "런던 거점은 금융규제 완화에 따른 영업기회보다, ring-fencing·운영공유·아웃소싱 통제의 준법 영향부터 점검해야 합니다.",
+    links: [
+      ["영국 Ring-fencing 개편", "https://www.reuters.com/sustainability/boards-policy-regulation/britains-government-update-banks-ring-fencing-regime-2026-05-13/"],
+      ["세부 완화안 보도", "https://www.reuters.com/business/finance/uk-set-out-looser-bank-ring-fencing-rules-next-week-sky-news-says-2026-05-16/"],
+      ["영국 전력시장 개편", "https://www.reuters.com/sustainability/boards-policy-regulation/uk-moves-weaken-link-between-electricity-gas-prices-2026-04-21/"],
+      ["BoE Ring-fencing 설명", "https://www.bankofengland.co.uk/prudential-regulation/key-initiatives/ring-fencing"]
+    ],
+    spark: "M0,50 C25,49 42,53 70,42 C96,30 120,55 144,44 C172,29 190,36 216,26 C250,14 290,20 320,18"
+  },
+  {
+    id: "vietnam",
+    group: "organic",
+    symbol: "VNM.HCM",
+    title: "베트남",
+    status: "성장둔화",
+    risk: "risk-medium",
+    trend: "flat",
+    tags: ["finance", "economy", "esg"],
+    finance: "성장률 둔화에도 외국인투자·제조업·수출 기반은 유지되나, 은행 여신은 글로벌 수요와 에너지 비용에 민감해질 수 있습니다.",
+    economy: "World Bank는 2026년 베트남 성장률을 전년 8%에서 6.8%로 둔화될 것으로 전망했지만, 전망 자체는 견조하다고 평가했습니다.",
+    esg: "전력 소비가 연중 고점에 도달하면서 기업·가계 절전 요청이 나왔고, 이는 제조업·데이터센터·디지털뱅킹 운영 안정성 이슈로 연결됩니다.",
+    implication: "베트남은 성장성은 유지되나 전력·에너지 비용과 비대면 채널 안정성이 중요합니다. IT 관점에서는 DR·망·성능 모니터링을 우선 점검해야 합니다.",
+    links: [
+      ["World Bank 베트남 성장률", "https://www.reuters.com/world/asia-pacific/world-bank-forecasts-vietnam-2026-economic-growth-slow-68-2026-05-15/"],
+      ["베트남 전력 절감 요청", "https://www.reuters.com/sustainability/boards-policy-regulation/vietnam-urges-businesses-households-cut-electricity-use-consumption-reaches-year-2026-05-15/"],
+      ["World Bank Vietnam", "https://www.worldbank.org/ext/en/country/vietnam"]
+    ],
+    spark: "M0,38 C28,34 48,28 72,30 C103,34 122,46 150,45 C184,42 200,55 234,58 C270,62 292,50 320,56"
+  },
+  {
+    id: "myanmar",
+    group: "organic",
+    symbol: "MMR.YGN",
+    title: "미얀마",
+    status: "고위험",
+    risk: "risk-high",
+    trend: "down",
+    tags: ["finance", "economy", "esg"],
+    finance: "EU 제재 연장과 정치·인권 리스크로 인해 결제, 환거래, 고객확인, 제재 스크리닝 부담이 높은 시장입니다.",
+    economy: "World Bank는 지진과 내전·공급망 차질이 경제활동을 계속 훼손한다고 평가합니다. 현지 영업은 성장보다 운영 연속성과 리스크 차단이 우선입니다.",
+    esg: "인권·분쟁·인도주의 리스크가 ESG의 핵심입니다. 대외 평판, 거래상대방, 원천자금 검증을 강화해야 합니다.",
+    implication: "미얀마는 신규 확장보다 제재·AML·운영연속성·직원안전 중심의 방어적 관리가 필요합니다.",
+    links: [
+      ["EU 제재 연장", "https://www.reuters.com/world/asia-pacific/eu-extends-sanctions-against-myanmar-by-year-2026-04-27/"],
+      ["World Bank Myanmar Monitor", "https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099061125205014652"],
+      ["World Bank Myanmar", "https://www.worldbank.org/ext/en/country/myanmar"]
+    ],
+    spark: "M0,20 C28,28 44,35 78,40 C108,45 126,62 158,60 C190,58 208,72 238,76 C270,80 294,90 320,96"
+  },
+  {
+    id: "china",
+    group: "organic",
+    symbol: "CHN.SHA",
+    title: "중국",
+    status: "정책전환",
+    risk: "risk-medium",
+    trend: "up",
+    tags: ["finance", "economy", "esg"],
+    finance: "미·중 정상회담 전후로 Citi·Goldman 등 미국 금융 CEO들이 중국 당국과 협력 논의를 진행했고, 중국은 금융감독 기본법 성격의 제도 정비도 추진 중입니다.",
+    economy: "부동산 중심 성장 둔화 대신 AI·EV·배터리·재생에너지 등 첨단 제조가 성장축으로 이동하고 있습니다.",
+    esg: "중국의 친환경·EV 공급망 확대는 글로벌 ESG와 산업정책의 기회이자 무역마찰 리스크입니다.",
+    implication: "중국은 금융시장 개방·감독강화·첨단제조 수출이 혼재된 시장입니다. 거래 확대보다 규제·데이터·제재·공급망 리스크를 먼저 봐야 합니다.",
+    links: [
+      ["미국 CEO·중국 금융당국 회동", "https://www.reuters.com/business/finance/chinese-officials-meet-citigroup-goldman-chiefs-beijing-2026-05-16/"],
+      ["중국 금융감독 법제 정비", "https://www.reuters.com/sustainability/boards-policy-regulation/china-proposes-stricter-financial-oversight-draft-law-2026-03-20/"],
+      ["중국 상품·첨단제조 전환", "https://www.reuters.com/commentary/reuters-open-interest/new-models-needed-track-chinas-messy-commodity-transition-2026-05-14/"],
+      ["중국 5개년·재생에너지 방향", "https://www.reuters.com/sustainability/climate-energy/what-chinas-next-five-year-plan-may-hold-store-commodity-markets-2026-03-03/"]
+    ],
+    spark: "M0,62 C30,56 48,48 72,52 C104,60 130,40 158,42 C184,44 204,22 236,28 C270,34 292,22 320,26"
+  },
+  {
+    id: "cambodia",
+    group: "inorganic",
+    symbol: "KHM.PRS",
+    title: "캄보디아 · KB PRASAC",
+    status: "ESG/신용",
+    risk: "risk-medium",
+    trend: "flat",
+    tags: ["finance", "economy", "esg"],
+    finance: "은행권은 고성장 이후 신용건전성·예대율·부실채권 관리가 핵심 이슈입니다. KB PRASAC은 통합 이후 여신·디지털 경쟁력 강화가 관건입니다.",
+    economy: "민간부채 부담과 성장 둔화 압력이 존재해 소액금융·상업은행 전환 과정에서 고객보호와 수익성 균형이 중요합니다.",
+    esg: "NBC가 은행권 지속가능금융 taxonomy를 공식 출시하면서 녹색여신 분류, 그린워싱 방지, 전환금융 기준이 현지 금융권 과제로 부상했습니다.",
+    implication: "KB PRASAC은 성장보다 신용품질·내부통제·녹색금융 분류체계 대응을 묶어 관리해야 합니다. IT는 여신심사·사후관리·ESG 데이터 항목을 함께 봐야 합니다.",
+    links: [
+      ["NBC Sustainable Finance Taxonomy 공식 출시", "https://www.nbc.gov.kh/english/news_and_events/news_info.php?id=897"],
+      ["NBC Taxonomy PDF", "https://www.nbc.gov.kh/download_files/publication/blueprints_eng/Sustainable%20Finance%20Taxonomy%20for%20Cambodian%20Banking%20Sector.pdf"],
+      ["캄보디아 금융권 신뢰·건전성 이슈", "https://cambodiainvestmentreview.com/2026/04/21/exclusive-cambodias-banking-sector-faces-a-confidence-test-not-a-crisis-as-sector-loan-to-deposit-ratio-improves-to-95-for-first-time-in-five-years/"],
+      ["KB PRASAC CSR 기부", "https://cambodiainvestmentreview.com/2026/05/08/kb-prasac-bank-strengthens-humanitarian-commitment-with-donation-to-cambodian-red-cross/"]
+    ],
+    spark: "M0,46 C30,44 50,42 76,48 C106,55 126,50 154,54 C186,58 205,48 236,52 C266,56 292,48 320,50"
+  },
+  {
+    id: "indonesia",
+    group: "inorganic",
+    symbol: "IDN.KBI",
+    title: "인도네시아 · KBI",
+    status: "개선/감독",
+    risk: "risk-watch",
+    trend: "up",
+    tags: ["finance", "economy", "esg"],
+    finance: "OJK는 금융서비스 안정성이 유지되고 있다고 밝혔고, 시장 신뢰 회복을 위한 투명성·자본시장 개혁이 진행 중입니다. KB Bank는 2026년 1분기 개선 신호를 보였습니다.",
+    economy: "정부는 2027년 GDP 성장 목표를 5.9~7.5%로 제시했습니다. 투자·생산성·산업정책이 성장의 핵심 동력입니다.",
+    esg: "APAC 은행권은 에너지 가격과 지정학 리스크로 신용충당금 부담이 커질 수 있습니다. 인도네시아는 전환금융·지배구조·시장 투명성이 ESG의 실무축입니다.",
+    implication: "KBI는 영업확대 메시지보다 자산건전성, 자본시장 신뢰, 내부통제, 현지 IT거버넌스 체계화가 경영진 설득 포인트입니다.",
+    links: [
+      ["OJK 2026.4월 금융서비스 안정성", "https://ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/RDKB-April-2026.aspx"],
+      ["인도네시아 2027 성장목표", "https://www.reuters.com/world/asia-pacific/indonesia-targeting-2027-gdp-growth-59-75-range-minister-says-2026-05-07/"],
+      ["APAC 은행권 신용리스크", "https://www.reuters.com/sustainability/boards-policy-regulation/asia-pacific-banks-face-growing-credit-risks-raise-provisions-iran-war-drags-2026-05-14/"],
+      ["KB Bank Q1 2026 개선", "https://investortrust.id/market/102259/kb-bank-bbkp-cetak-laba-rp-9-miliar-di-kuartal-i-2026"],
+      ["KB Bank Q1 재무제표", "https://indopremier.com/xdir/news/LAPORAN%20KEUANGAN/2026/q1//BBKP_Q1_2026.pdf"]
+    ],
+    spark: "M0,72 C30,68 46,64 75,66 C108,68 130,52 158,50 C188,48 204,34 236,36 C266,38 290,30 320,28"
+  }
+];
+
+const grid = document.getElementById("countryGrid");
+const watchlist = document.getElementById("watchlist");
+const searchInput = document.getElementById("searchInput");
+const tabs = document.querySelectorAll(".tab");
+let currentFilter = "all";
+
+function trendClass(t) {
+  if (t === "up") return "up";
+  if (t === "down") return "down";
+  return "flat";
+}
+
+function trendSymbol(t) {
+  if (t === "up") return "▲";
+  if (t === "down") return "▼";
+  return "●";
+}
+
+function renderWatchlist(items) {
+  watchlist.innerHTML = items.map((d, idx) => `
+    <a class="watch-item ${idx === 0 ? "active" : ""}" href="#${d.id}">
+      <div class="watch-meta">
+        <b>${d.symbol}</b>
+        <small>${d.title}</small>
+      </div>
+      <div class="pill ${trendClass(d.trend)}">${trendSymbol(d.trend)}</div>
+    </a>
+  `).join("");
+}
+
+function renderGrid() {
+  const q = searchInput.value.trim().toLowerCase();
+  let items = DATA.filter(d => {
+    const text = [d.symbol, d.title, d.status, d.finance, d.economy, d.esg, d.implication].join(" ").toLowerCase();
+    const matchesSearch = !q || text.includes(q);
+    const matchesFilter =
+      currentFilter === "all" ||
+      d.group === currentFilter ||
+      (currentFilter === "high" && d.risk === "risk-high") ||
+      (currentFilter === "esg" && d.tags.includes("esg"));
+    return matchesSearch && matchesFilter;
+  });
+
+  grid.innerHTML = items.map(d => `
+    <article class="card country-card" id="${d.id}">
+      <div class="country-top">
+        <div class="country-title">
+          <h3>${d.title}</h3>
+          <p>${d.symbol} · ${d.group === "organic" ? "오가닉 점포" : "인오가닉 법인"} · ${d.status}</p>
+        </div>
+        <span class="badge ${d.risk}">${d.status}</span>
+      </div>
+
+      <div class="mini-chart">
+        <svg viewBox="0 0 320 90" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="area-${d.id}" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="${d.trend === 'down' ? '#ff453a' : d.trend === 'up' ? '#30d158' : '#ffd60a'}" stop-opacity=".48"/>
+              <stop offset="100%" stop-color="${d.trend === 'down' ? '#ff453a' : d.trend === 'up' ? '#30d158' : '#ffd60a'}" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="${d.spark} L320,90 L0,90 Z" fill="url(#area-${d.id})"></path>
+          <path d="${d.spark}" fill="none" stroke="${d.trend === 'down' ? '#ff453a' : d.trend === 'up' ? '#30d158' : '#ffd60a'}" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="triad">
+        <div class="lens">
+          <b><span class="dot fin"></span>금융</b>
+          <p>${d.finance}</p>
+        </div>
+        <div class="lens">
+          <b><span class="dot eco"></span>경제</b>
+          <p>${d.economy}</p>
+        </div>
+        <div class="lens">
+          <b><span class="dot esg"></span>ESG</b>
+          <p>${d.esg}</p>
+        </div>
+      </div>
+
+      <div class="implication"><b>사업 영향:</b> ${d.implication}</div>
+
+      <div class="links">
+        ${d.links.map(([label, url]) => `<a href="${url}" target="_blank" rel="noopener">${label} ↗</a>`).join("")}
+      </div>
+    </article>
+  `).join("");
+
+  renderWatchlist(items.length ? items : DATA);
+}
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    currentFilter = tab.dataset.filter;
+    renderGrid();
+  });
+});
+
+searchInput.addEventListener("input", renderGrid);
+renderWatchlist(DATA);
+renderGrid();
+</script>
+</body>
+</html>
