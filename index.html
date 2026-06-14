@@ -1,72 +1,1129 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Global Business Radar | Regional Summary</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>KB 글로벌 데일리 브리핑</title>
 <style>
-:root{--bg:#06080f;--panel:rgba(24,28,39,.86);--panel2:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--text:#f4f7fb;--muted:#9da9bd;--blue:#0a84ff;--green:#30d158;--yellow:#ffd60a;--red:#ff453a;--purple:#bf5af2}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI','Noto Sans KR',Arial,sans-serif;background:radial-gradient(circle at 8% 0%,rgba(10,132,255,.24),transparent 30%),radial-gradient(circle at 94% 4%,rgba(191,90,242,.18),transparent 26%),var(--bg);color:var(--text)}a{color:inherit;text-decoration:none}.wrap{display:grid;grid-template-columns:330px 1fr;min-height:100vh}.side{position:sticky;top:0;height:100vh;padding:24px;background:rgba(8,10,17,.78);border-right:1px solid var(--line);backdrop-filter:blur(22px);overflow:auto}.main{padding:30px 36px 54px}.brand h1{font-size:31px;line-height:.96;letter-spacing:-.06em;margin:0}.brand p{color:var(--muted);font-size:12px;font-weight:900;letter-spacing:.12em;margin:10px 0 0}.notice{margin:22px 0;padding:15px;border-radius:18px;border:1px solid rgba(48,209,88,.34);background:rgba(48,209,88,.10);line-height:1.55;color:#e5f8ea;font-size:13px}.nav a{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px 12px;margin:8px 0;border-radius:16px;background:var(--panel2);border:1px solid transparent}.nav a:hover{border-color:var(--line);background:rgba(255,255,255,.10)}.nav b{display:block;font-size:14px}.nav span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.pill{border-radius:999px;padding:6px 9px;font-size:12px;font-weight:900;border:1px solid var(--line);height:max-content}.dev{color:var(--blue)}.sea{color:var(--green)}.risk{color:var(--red)}.card{border:1px solid var(--line);background:var(--panel);box-shadow:0 18px 60px rgba(0,0,0,.32);border-radius:26px;padding:24px}.hero{margin-bottom:18px}.eyebrow{color:var(--muted);font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.hero h2{font-size:60px;letter-spacing:-.075em;line-height:.94;margin:10px 0 13px}.lead{line-height:1.68;color:#dce6f4;font-size:16px;margin:0;max-width:980px}.global-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.mini{border:1px solid var(--line);background:var(--panel2);border-radius:18px;padding:16px;line-height:1.55;color:#dae4f3;font-size:14px}.mini b{display:block;color:#fff;margin-bottom:6px}.region-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}.region h3{font-size:27px;letter-spacing:-.04em;margin:0 0 12px}.bullets{display:grid;gap:10px}.bullet{border-left:3px solid var(--blue);background:rgba(10,132,255,.075);border-radius:0 15px 15px 0;padding:11px 13px;line-height:1.58;color:#e5eefc}.region.sea-region .bullet{border-left-color:var(--green);background:rgba(48,209,88,.07)}.countries{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.country .top{display:flex;justify-content:space-between;gap:12px}.country h4{font-size:23px;letter-spacing:-.04em;margin:0}.country .sub{color:var(--muted);font-size:13px;font-weight:800;margin-top:5px}.scores{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:15px 0}.score{border:1px solid var(--line);border-radius:14px;background:var(--panel2);padding:10px}.score b{display:block;font-size:20px}.score span{color:var(--muted);font-size:11px;font-weight:900}.lens{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.box{border:1px solid var(--line);border-radius:17px;background:var(--panel2);padding:13px;line-height:1.52;font-size:13px;color:#dbe5f4}.box b{display:block;color:#fff;margin-bottom:7px}.impact{border-left:3px solid var(--purple);background:rgba(191,90,242,.08);border-radius:0 14px 14px 0;padding:10px 12px;margin:13px 0;line-height:1.55}.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.links a{border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);padding:8px 10px;font-size:12px;font-weight:900}.footer{color:var(--muted);font-size:12px;line-height:1.6;margin-top:18px}@media(max-width:1120px){.wrap{grid-template-columns:1fr}.side{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line)}.main{padding:18px 16px 42px}.hero h2{font-size:42px}.global-grid,.region-grid,.countries,.lens{grid-template-columns:1fr}}
+:root{
+  /* KB 시그니처 */
+  --gold:#FFBC00; --gold-lt:#FFF8E0; --gold-dim:#D4960A;
+
+  /* 구조 — 네이비는 헤더 단 하나에만 */
+  --navy:#54504A;
+  --ink:#1A1816;
+  --charcoal:#54504A;
+  --paper:#F7F5F0;       /* 배경: 깨끗한 아이보리 */
+  --card:#FFFFFF;        /* 카드: 순백 */
+  --line:#E4E0D8;        /* 구분선: 따뜻한 베이지 */
+  --sub:#8A857C;
+
+  /* 카테고리 — 차분하고 진한 톤 */
+  --c-경제:#1E4D8C; --b-경제:#EEF3FB;
+  --c-금융:#1F6142; --b-금융:#EEF6F1;
+  --c-디지털:#4E328A; --b-디지털:#F0EBFB;
+  --c-금융사고:#9E2A22; --b-금융사고:#FAECEA;
+  --c-ESG:#1A6E54; --b-ESG:#EAF4F0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:#C8C4BC;
+  font-family:"Pretendard","Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  color:var(--ink);-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:480px;margin:0 auto;background:var(--paper);min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,.12);}
+
+/* ━━━ 1. MASTHEAD ━━━ */
+header{background:var(--navy);padding:20px 20px 18px;position:relative;overflow:hidden;}
+header::after{
+  content:"KB";position:absolute;right:-10px;top:-14px;
+  font-size:120px;font-weight:900;color:rgba(255,255,255,.05);
+  line-height:1;pointer-events:none;letter-spacing:-0.04em;
+}
+.mast-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.mast-brand{display:flex;align-items:center;gap:4px;}
+.mast-kb{color:var(--gold);font-size:15px;font-weight:900;letter-spacing:.06em;}
+.mast-star{color:rgba(255,188,0,.5);font-size:13px;}
+.mast-meta{display:flex;align-items:center;gap:8px;}
+.mast-issue{color:#8A9BB4;font-size:11px;font-weight:600;}
+.mast-date{color:#8A9BB4;font-size:11px;font-weight:600;}
+.mast-title{color:#fff;font-size:26px;font-weight:900;letter-spacing:-0.025em;line-height:1;margin-bottom:6px;}
+.mast-sub{color:#7A8FA8;font-size:11px;font-weight:600;letter-spacing:.02em;}
+
+/* ━━━ 2. GLOBAL PULSE ━━━ */
+.pulse-section{background:var(--card);padding:16px 20px;border-bottom:1px solid var(--line);}
+.pulse-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.pulse-title{font-size:11px;font-weight:900;letter-spacing:.06em;color:var(--ink);}
+.pulse-badge{font-size:10px;font-weight:700;color:var(--sub);background:var(--paper);border-radius:3px;padding:2px 7px;}
+.pulse-grid{display:flex;flex-direction:column;gap:7px;}
+.pulse-row{display:flex;align-items:center;gap:10px;}
+.p-cat{font-size:11px;font-weight:700;color:var(--charcoal);width:46px;flex-shrink:0;}
+.p-track{flex:1;background:var(--paper);border-radius:10px;height:7px;overflow:hidden;}
+.p-fill{height:100%;border-radius:10px;transition:width 1s ease;}
+.p-lv{font-size:10.5px;font-weight:800;width:26px;text-align:right;flex-shrink:0;}
+
+/* ━━━ 3. EXECUTIVE SUMMARY ━━━ */
+.summary-box{margin:0 20px 0;background:var(--navy);border-radius:0 0 10px 10px;padding:16px;border-top:3px solid var(--gold);}
+.sum-label{color:var(--gold);font-size:10px;font-weight:800;letter-spacing:.12em;margin-bottom:12px;opacity:.8;}
+.sum-bullets{display:flex;flex-direction:column;gap:10px;}
+.sum-bullet{display:flex;align-items:flex-start;gap:9px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.07);}
+.sum-bullet:last-child{border-bottom:none;padding-bottom:0;}
+.sum-bullet .cat-badge{flex-shrink:0;margin-top:1px;}
+.sum-text{color:rgba(255,255,255,.85);font-size:13px;line-height:1.55;font-weight:400;}
+
+/* ━━━ 4. 이 주의 숫자 ━━━ */
+.bignum-widget{
+  margin:14px 20px 0;background:var(--card);border-radius:10px;
+  padding:16px;border:1px solid var(--line);position:relative;overflow:hidden;
+  box-shadow:0 2px 8px rgba(26,24,22,.06);
+}
+.bignum-widget::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold);
+}
+.bn-eyebrow{font-size:10px;font-weight:900;letter-spacing:.1em;color:var(--sub);margin-bottom:8px;}
+.bn-main{display:flex;align-items:baseline;gap:6px;margin-bottom:6px;}
+.bn-number{font-size:44px;font-weight:900;color:var(--navy);letter-spacing:-0.03em;line-height:1;}
+.bn-unit{font-size:16px;font-weight:700;color:var(--sub);}
+.bn-desc{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:4px;}
+.bn-context{font-size:12px;color:var(--sub);line-height:1.55;}
+
+/* ━━━ 5. HOOK BAR ━━━ */
+.hook-bar{display:flex;margin:14px 20px 0;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+.hook-cell{flex:1;display:flex;align-items:center;gap:8px;padding:11px 13px;background:var(--card);cursor:pointer;text-decoration:none;color:inherit;transition:background .15s;}
+.hook-cell:first-child{border-right:1px solid var(--line);}
+.hook-cell:hover{background:#F1EFEA;}
+.hk-icon{font-size:15px;flex-shrink:0;}
+.hk-text{flex:1;min-width:0;}
+.hk-title{font-size:10px;font-weight:800;color:var(--sub);letter-spacing:.04em;display:block;margin-bottom:2px;}
+.hk-val{font-size:12.5px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+.hk-arrow{font-size:11px;color:var(--sub);flex-shrink:0;}
+.hook-correct{color:#2E8B6E!important;}
+.hook-wrong{color:#C0392B!important;}
+
+/* ━━━ 6. TODAY'S TOP 3 ━━━ */
+.headline-section{margin:14px 20px 0;}
+.hs-slogan{text-align:center;padding:8px 0 12px;font-size:9px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--sub);opacity:.5;}
+.hs-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.hs-rule{flex:1;height:1.5px;background:var(--ink);}
+.hs-label{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--ink);white-space:nowrap;}
+.headline-1{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 16px 14px;margin-bottom:8px;border-left:4px solid var(--navy);position:relative;overflow:hidden;}
+.h1-bg-num{position:absolute;bottom:-10px;right:8px;font-size:80px;font-weight:900;color:rgba(0,0,0,.04);line-height:1;letter-spacing:-0.04em;pointer-events:none;font-variant-numeric:tabular-nums;}
+.h1-meta{display:flex;align-items:center;gap:7px;margin-bottom:9px;}
+.h1-country{font-size:11.5px;font-weight:700;color:var(--sub);}
+.h1-title{font-size:18px;font-weight:900;line-height:1.3;color:var(--ink);margin-bottom:7px;letter-spacing:-0.02em;}
+.h1-lead{font-size:12.5px;color:var(--sub);line-height:1.5;margin:0;}
+.headline-23{display:flex;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.hl-card{flex:1;padding:14px;position:relative;overflow:hidden;}
+.hl-card:first-child{border-right:1px solid var(--line);}
+.hl-bg-num{position:absolute;bottom:-4px;right:6px;font-size:44px;font-weight:900;color:rgba(0,0,0,.04);line-height:1;pointer-events:none;font-variant-numeric:tabular-nums;}
+.hl-num-badge{display:inline-block;font-size:10px;font-weight:900;background:var(--navy);color:var(--gold);border-radius:3px;padding:2px 6px;letter-spacing:.04em;margin-bottom:7px;}
+.hl-meta{display:flex;align-items:center;gap:5px;margin-bottom:6px;flex-wrap:wrap;}
+.hl-country{font-size:11px;font-weight:700;color:var(--sub);}
+.hl-title{font-size:13px;font-weight:800;line-height:1.4;color:var(--ink);margin:0;}
+
+/* ━━━ 7. 거점 타임바 ━━━ */
+.timebar-wrap{margin:14px 0 0;padding:0 0 0 20px;}
+.timebar-label{font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--sub);margin-bottom:8px;}
+.timebar-scroll{display:flex;gap:8px;overflow-x:auto;padding-right:20px;scrollbar-width:none;}
+.timebar-scroll::-webkit-scrollbar{display:none;}
+.tb-chip{
+  flex-shrink:0;background:var(--card);border:1px solid var(--line);box-shadow:0 1px 3px rgba(30,25,20,.05);
+  border-radius:8px;padding:9px 12px;min-width:72px;text-align:center;
+}
+.tb-flag{font-size:16px;display:block;margin-bottom:4px;}
+.tb-name{font-size:10px;font-weight:700;color:var(--sub);display:block;margin-bottom:3px;}
+.tb-time{font-size:13px;font-weight:900;color:var(--ink);display:block;font-variant-numeric:tabular-nums;letter-spacing:.01em;}
+.tb-chip.sub-loc{border-color:#E2C76B;background:#FFFBEE;}
+.tb-chip.sub-loc .tb-name{color:#A8841A;}
+
+/* ━━━ 8. 메인 3탭 ━━━ */
+.main-tabs{display:flex;padding:16px 20px 0;gap:8px;}
+.main-tab{flex:1;padding:11px 0;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--sub);font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit;line-height:1.3;text-align:center;transition:all .15s;}
+.main-tab.active{background:var(--navy);color:var(--gold);border-color:var(--navy);}
+.main-tab .tab-icon{display:block;font-size:16px;margin-bottom:3px;}
+
+/* ━━━ PANELS ━━━ */
+.panel{display:none;}.panel.visible{display:block;}
+
+/* ━━━ 국가 칩 ━━━ */
+.sub-nav{position:sticky;top:0;background:var(--paper);z-index:10;padding:10px 0 8px;border-bottom:1px solid var(--line);}
+.chip-row{display:flex;gap:6px;overflow-x:auto;padding:0 20px;scrollbar-width:none;}
+.chip-row::-webkit-scrollbar{display:none;}
+.chip{flex-shrink:0;padding:7px 12px;border-radius:16px;border:1px solid var(--line);background:var(--card);color:var(--charcoal);font-size:12.5px;font-weight:800;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:inherit;}
+.chip.sub-chip{border-color:#E2C76B;background:#FFFBEE;}
+.chip.active{border:1.5px solid var(--navy);background:var(--navy);color:var(--gold);}
+
+/* ━━━ 거점 헤더 + 지표 ━━━ */
+.country-head{display:flex;align-items:center;gap:8px;padding:14px 20px 10px;}
+.country-head .flag{font-size:18px;}
+.country-head .cname{font-size:16px;font-weight:900;}
+.type-badge{font-size:10.5px;font-weight:800;color:var(--sub);background:#EFEDE8;border-radius:3px;padding:2px 7px;}
+.type-badge.sub{color:#A8841A;background:#FFF4D6;}
+.indicators{display:flex;gap:8px;padding:0 20px;}
+.indicator{flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:10px;}
+.indicator .lbl{font-size:10px;color:var(--sub);font-weight:600;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.indicator .val{font-size:15px;font-weight:800;letter-spacing:-0.01em;}
+.indicator .delta{font-size:11px;font-weight:700;margin-top:2px;}
+.up{color:#C0392B;}.down{color:#2E5E9E;}.flat{color:var(--sub);}
+
+/* ━━━ 배지 ━━━ */
+.cat-badge{font-size:11px;font-weight:700;border-radius:3px;padding:2px 8px;white-space:nowrap;}
+.cat-경제{background:var(--b-경제);color:var(--c-경제);}
+.cat-금융{background:var(--b-금융);color:var(--c-금융);}
+.cat-디지털{background:var(--b-디지털);color:var(--c-디지털);}
+.cat-금융사고{background:var(--b-금융사고);color:var(--c-금융사고);}
+.cat-ESG{background:var(--b-ESG);color:var(--c-ESG);}
+.bar-경제{border-left-color:var(--c-경제)!important;}
+.bar-금융{border-left-color:var(--c-금융)!important;}
+.bar-디지털{border-left-color:var(--c-디지털)!important;}
+.bar-금융사고{border-left-color:var(--c-금융사고)!important;}
+.bar-ESG{border-left-color:var(--c-ESG)!important;}
+.tier{font-size:10px;font-weight:700;letter-spacing:.02em;border-radius:3px;padding:2px 6px;white-space:nowrap;}
+.tier-0{background:var(--navy);color:var(--gold);}
+.tier-1{background:#E6E3DD;color:var(--charcoal);}
+.tier-2{background:#F1EFEA;color:var(--sub);}
+
+/* ━━━ 뉴스 카드 ━━━ */
+.news-list{padding:14px 20px 8px;}
+.card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--charcoal);border-radius:8px;padding:15px 16px;margin-bottom:10px;box-shadow:0 1px 6px rgba(26,24,22,.05);}
+.card .meta{display:flex;gap:6px;align-items:center;margin-bottom:9px;flex-wrap:wrap;}
+.card .source{font-size:11px;color:var(--sub);margin-left:auto;}
+.card h3{font-size:15px;font-weight:800;line-height:1.4;margin-bottom:7px;}
+.card .body{font-size:13px;color:#44413B;line-height:1.68;}
+.implication{margin-top:11px;padding:9px 11px;background:#FFF8E5;border:1px solid #F2E2AE;border-radius:5px;font-size:12.5px;line-height:1.55;color:#6B5500;}
+.implication strong{font-weight:800;}
+.src-link{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--charcoal);text-decoration:underline;text-underline-offset:3px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;}
+
+/* ━━━ 글로벌 동향 ━━━ */
+.global-section{padding:16px 20px 0;}
+.global-section h2{font-size:13px;font-weight:900;letter-spacing:.04em;color:var(--charcoal);margin-bottom:10px;}
+.top5-item{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:7px;}
+.top5-item .num{font-size:18px;font-weight:900;color:var(--gold);line-height:1.2;flex-shrink:0;}
+.top5-item .t5-meta{display:flex;gap:6px;align-items:center;margin-bottom:3px;flex-wrap:wrap;}
+.top5-item .region{font-size:11px;font-weight:700;color:var(--sub);}
+.top5-item .title{font-size:13.5px;font-weight:700;line-height:1.45;}
+.cat-section{margin-bottom:4px;}
+.cat-header{display:flex;align-items:center;gap:8px;padding:10px 20px;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:6px;margin:0 20px 6px;user-select:none;}
+.cat-header .cat-title{font-size:13px;font-weight:800;flex:1;}
+.cat-header .toggle{font-size:12px;color:var(--sub);transition:transform .2s;}
+.cat-header.open .toggle{transform:rotate(180deg);}
+.cat-body{padding:0 20px 2px;display:none;}
+.cat-body.open{display:block;}
+.g-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--charcoal);border-radius:6px;padding:12px 14px;margin-bottom:8px;}
+.g-card .g-meta{display:flex;gap:6px;align-items:center;margin-bottom:6px;flex-wrap:wrap;}
+.g-card .g-source{font-size:11px;color:var(--sub);margin-left:auto;}
+.g-card h4{font-size:13.5px;font-weight:800;line-height:1.4;margin-bottom:5px;}
+.g-card .g-body{font-size:12.5px;color:#44413B;line-height:1.6;}
+
+/* ━━━ 게임존 (하단) ━━━ */
+.game-zone-full{padding:22px 20px 4px;border-top:2px solid var(--line);margin-top:18px;}
+.game-zone-title{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.gz-line{flex:1;height:1px;background:var(--line);}
+.gz-label{font-size:11px;font-weight:900;color:var(--charcoal);letter-spacing:.08em;white-space:nowrap;}
+.gz-section-label{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--sub);margin-bottom:8px;}
+.yesterday-box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:13px 15px;margin-bottom:10px;}
+.ybox-head{display:flex;align-items:center;gap:6px;margin-bottom:9px;}
+.ybox-q{font-size:12px;font-weight:700;color:var(--ink);flex:1;}
+.ybox-result{font-size:11px;font-weight:800;color:#2E8B6E;background:#E9F4F1;border-radius:3px;padding:2px 7px;white-space:nowrap;}
+.ybar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.ybar-label{font-size:11px;font-weight:600;color:var(--sub);width:68px;flex-shrink:0;white-space:nowrap;}
+.ybar-track{flex:1;background:#EFEDE8;border-radius:4px;height:8px;overflow:hidden;}
+.ybar-fill{height:100%;border-radius:4px;background:var(--charcoal);}
+.ybar-fill.correct{background:#2E8B6E;}
+.ybar-pct{font-size:11px;font-weight:700;color:var(--ink);width:30px;text-align:right;}
+.ybar-tick{font-size:11px;}
+.predict-box{background:var(--navy);border-radius:10px;padding:16px;margin-bottom:10px;}
+.predict-label{color:var(--gold);font-size:10px;font-weight:800;letter-spacing:.1em;margin-bottom:6px;}
+.predict-q{color:#fff;font-size:14px;font-weight:800;line-height:1.45;margin-bottom:12px;}
+.predict-opts{display:flex;flex-direction:column;gap:7px;}
+.predict-btn{width:100%;padding:11px 14px;border-radius:7px;border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-size:13px;font-weight:700;cursor:pointer;text-align:left;font-family:inherit;transition:all .15s;display:flex;align-items:center;gap:8px;}
+.predict-btn:hover{background:rgba(255,255,255,.14);border-color:var(--gold);}
+.predict-btn .opt-num{font-size:11px;font-weight:800;color:var(--gold);width:16px;flex-shrink:0;}
+.predict-meta{margin-top:10px;font-size:11px;color:rgba(255,255,255,.45);text-align:right;}
+.result-opts{display:flex;flex-direction:column;gap:7px;}
+.result-row{display:flex;align-items:center;gap:8px;}
+.result-label{font-size:12px;font-weight:700;color:rgba(255,255,255,.75);width:72px;flex-shrink:0;}
+.result-track{flex:1;background:rgba(255,255,255,.1);border-radius:4px;height:10px;overflow:hidden;}
+.result-fill{height:100%;border-radius:4px;background:rgba(255,255,255,.35);transition:width .8s ease;}
+.result-fill.my-pick{background:var(--gold);}
+.result-pct{font-size:12px;font-weight:800;color:#fff;width:32px;text-align:right;}
+.result-me{font-size:10px;color:var(--gold);font-weight:800;}
+.predict-done{margin-top:10px;font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:space-between;}
+.streak-badge{background:var(--gold);color:var(--ink);font-size:11px;font-weight:900;border-radius:20px;padding:2px 8px;}
+.quiz-box{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:4px;}
+.quiz-header{background:#F1ECF7;padding:12px 16px;display:flex;align-items:center;gap:8px;}
+.quiz-icon{font-size:16px;}
+.quiz-title{font-size:12px;font-weight:800;color:#6B4E8C;flex:1;}
+.quiz-streak{background:#6B4E8C;color:#fff;font-size:11px;font-weight:800;border-radius:20px;padding:2px 8px;}
+.quiz-body{padding:14px 16px;}
+.quiz-q{font-size:14px;font-weight:800;color:var(--ink);line-height:1.5;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:7px;}
+.quiz-btn{width:100%;padding:10px 13px;border-radius:7px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-size:13px;font-weight:600;cursor:pointer;text-align:left;font-family:inherit;transition:all .15s;display:flex;align-items:center;gap:8px;}
+.quiz-btn:hover:not(:disabled){background:#EFEDE8;border-color:var(--charcoal);}
+.quiz-btn:disabled{cursor:default;}
+.quiz-btn.correct,.quiz-btn.reveal-correct{background:#E9F4F1;border-color:#2E8B6E;color:#2E8B6E;}
+.quiz-btn.wrong{background:#FBEDEA;border-color:#C0392B;color:#C0392B;}
+.quiz-btn .q-num{font-size:11px;font-weight:800;width:16px;flex-shrink:0;opacity:.6;}
+.quiz-explanation{margin-top:12px;padding:10px 12px;background:#FFF8E5;border:1px solid #F2E2AE;border-radius:6px;font-size:12.5px;color:#6B5500;line-height:1.6;}
+.quiz-explanation strong{font-weight:800;}
+.quiz-answered{margin-top:8px;font-size:12px;font-weight:700;text-align:center;padding:4px 0;}
+.quiz-answered.ok{color:#2E8B6E;}
+.quiz-answered.no{color:#C0392B;}
+
+/* ━━━ FOOTER ━━━ */
+footer{padding:18px 20px 0;border-top:1px solid var(--line);margin-top:16px;}
+footer p{font-size:11px;color:var(--sub);line-height:1.7;}
+.footer-slogan{margin-top:20px;padding:18px 0 28px;border-top:1px solid var(--line);text-align:center;}
+.footer-slogan span{font-size:9.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--navy);opacity:.35;}
 </style>
 </head>
 <body>
 <div class="wrap">
-<aside class="side">
-  <div class="brand"><h1>Global<br>Business Radar</h1><p>REGIONAL WEEKLY SUMMARY</p></div>
-  <div class="notice"><b>주간 자동 분석형</b><br>국가별 뉴스 위에 글로벌 주요 내용과 지역별 요약을 먼저 보여주는 구조입니다.<br>업데이트: 2026-W20</div>
-  <nav class="nav">
-    <a href="#global"><div><b>글로벌 주요 내용</b><span>공통 리스크와 사업 영향</span></div><em class="pill">TOP</em></a>
-    <a href="#developed"><div><b>선진국/주요 금융허브</b><span>미국·일본·영국·중국</span></div><em class="pill dev">DEV</em></a>
-    <a href="#sea"><div><b>동남아지역</b><span>베트남·미얀마·캄보디아·인도네시아</span></div><em class="pill sea">SEA</em></a>
-    <a href="#countries"><div><b>국가별 상세</b><span>금융·경제·ESG 카드</span></div><em class="pill">VIEW</em></a>
-  </nav>
-</aside>
-<main class="main">
-  <section class="card hero" id="global">
-    <div class="eyebrow">Global Business News · Finance / Economy / ESG</div>
-    <h2>글로벌 주요 내용 요약</h2>
-    <p class="lead">이번 주 글로벌 비즈니스 흐름은 <b>금리·채권 변동성</b>, <b>은행 규제 완화와 금융감독 강화의 병행</b>, <b>에너지 가격과 전력 안정성</b>, <b>지속가능금융의 제도화</b>로 압축됩니다. 경영진 보고에서는 “시장 리스크가 어느 국가의 영업·IT·컴플라이언스에 영향을 주는가”를 중심으로 보는 것이 좋습니다.</p>
-    <div class="global-grid">
-      <div class="mini"><b>① 금융</b>미국·영국은 은행 규제 부담 완화 방향이 강하고, 일본·중국은 비은행금융/NBFI와 금융감독 체계 강화가 이슈입니다. 선진권은 규제 완화가 영업기회가 될 수 있으나, 변동성 확대 시 자본·유동성 관리 부담도 커질 수 있습니다.</div>
-      <div class="mini"><b>② 경제</b>G7은 공공부채, 채권시장 변동성, 에너지발 인플레이션을 핵심 의제로 다루고 있습니다. 동남아는 수출·전력·에너지 비용·글로벌 유동성 변화에 민감합니다.</div>
-      <div class="mini"><b>③ ESG/규제</b>캄보디아의 녹색금융 taxonomy처럼 ESG가 선언에서 여신분류·공시·그린워싱 방지 체계로 내려오고 있습니다. 베트남은 전력수요와 EV 정책, 인도네시아는 디지털금융과 지속가능금융이 주요 관찰 지점입니다.</div>
+
+<!-- ━━━━━━━━━━━━━━━━ 1. MASTHEAD ━━━━━━━━━━━━━━━━ -->
+<header>
+  <div class="mast-top">
+    <div class="mast-brand">
+      <span class="mast-kb">KB</span>
+      <span class="mast-star">✱</span>
     </div>
-  </section>
+    <div class="mast-meta">
+      <span class="mast-issue">제 130호</span>
+      <span class="mast-date">2026.06.13 토</span>
+    </div>
+  </div>
+  <h1 class="mast-title">글로벌 데일리<br>브리핑</h1>
+  <div class="mast-sub">전 세계 12개 거점 · KB금융그룹 글로벌</div>
+</header>
 
-  <section class="region-grid">
-    <article class="card region" id="developed">
-      <div class="eyebrow">Developed Markets / Major Financial Hubs</div>
-      <h3>선진국·주요 금융허브 요약</h3>
-      <div class="bullets">
-        <div class="bullet"><b>미국</b>: 대형은행 자본규제 완화 논의가 진행 중입니다. 자본부담 완화는 대출·배당·자사주 매입 여력을 키울 수 있지만, 시장 변동성 확대 국면에서는 감독당국과 은행권 간 균형이 중요합니다.</div>
-        <div class="bullet"><b>일본</b>: BOJ는 투자펀드와 해외 헤지펀드·PE 등 NBFI가 금융시스템 리스크를 키울 수 있다고 경고했습니다. 일본 금융기관의 해외펀드 익스포저와 채권시장 변동성 관리가 핵심입니다.</div>
-        <div class="bullet"><b>영국</b>: 은행 ring-fencing 완화는 백오피스 공유, SME 대출경쟁 확대, 운영비 절감 가능성을 주지만, 리테일/투자은행 분리 원칙의 완화에 따른 통제 리스크가 병존합니다.</div>
-        <div class="bullet"><b>중국</b>: 금융감독 기본법 성격의 초안은 소비자보호, AML, 금융사 전 주기 감독, 불법행위 제재 강화를 포함합니다. 시장개방보다 감독·데이터·제재 리스크 관리가 우선입니다.</div>
-      </div>
-    </article>
-    <article class="card region sea-region" id="sea">
-      <div class="eyebrow">Southeast Asia</div>
-      <h3>동남아지역 요약</h3>
-      <div class="bullets">
-        <div class="bullet"><b>공통 흐름</b>: ASEAN+3는 금융시장 과도한 변동성과 글로벌 유동성 변화에 대응할 준비가 되어 있다고 밝혔습니다. 동남아는 외부 충격 대응과 공급망 안정성이 핵심입니다.</div>
-        <div class="bullet"><b>베트남</b>: 성장률은 여전히 높지만 둔화 국면입니다. 수출·제조업 의존도가 크고 전력수요가 높아 디지털뱅킹·데이터센터·영업점 운영 안정성 점검이 필요합니다.</div>
-        <div class="bullet"><b>캄보디아</b>: 녹색금융 taxonomy 도입으로 여신·투자 분류체계, ESG 데이터, 그린워싱 방지 통제가 실무 이슈가 됩니다. KB PRASAC은 신용품질과 내부통제를 함께 봐야 합니다.</div>
-        <div class="bullet"><b>인도네시아</b>: OJK는 은행권 유동성·자본·NPL 지표가 안정적이라고 발표했습니다. 동시에 QRIS 국가간 연계 등 디지털결제 인프라 확대가 진행되어 KBI 관점의 채널·망·보안 대응이 중요합니다.</div>
-      </div>
-    </article>
-  </section>
+<!-- ━━━━━━━━━━━━━━━━ 2. GLOBAL PULSE ━━━━━━━━━━━━━━━━ -->
+<section class="pulse-section">
+  <div class="pulse-header">
+    <span class="pulse-title">📡 오늘의 글로벌 온도</span>
+    <span class="pulse-badge">2026.06.13 기준</span>
+  </div>
+  <div class="pulse-grid">
+    <div class="pulse-row">
+      <span class="p-cat">경제</span>
+      <div class="p-track"><div class="p-fill" style="width:88%;background:var(--c-경제)"></div></div>
+      <span class="p-lv" style="color:var(--c-경제)">높음</span>
+    </div>
+    <div class="pulse-row">
+      <span class="p-cat">금융사고</span>
+      <div class="p-track"><div class="p-fill" style="width:72%;background:var(--c-금융사고)"></div></div>
+      <span class="p-lv" style="color:var(--c-금융사고)">주의</span>
+    </div>
+    <div class="pulse-row">
+      <span class="p-cat">금융</span>
+      <div class="p-track"><div class="p-fill" style="width:60%;background:var(--c-금융)"></div></div>
+      <span class="p-lv" style="color:var(--c-금융)">보통</span>
+    </div>
+    <div class="pulse-row">
+      <span class="p-cat">디지털</span>
+      <div class="p-track"><div class="p-fill" style="width:50%;background:var(--c-디지털)"></div></div>
+      <span class="p-lv" style="color:var(--c-디지털)">보통</span>
+    </div>
+    <div class="pulse-row">
+      <span class="p-cat">ESG</span>
+      <div class="p-track"><div class="p-fill" style="width:35%;background:var(--c-ESG)"></div></div>
+      <span class="p-lv" style="color:var(--c-ESG)">낮음</span>
+    </div>
+  </div>
+</section>
 
-  <section class="countries" id="countries">
-    <article class="card country"><div class="top"><div><h4>미국 · 뉴욕</h4><div class="sub">선진국/주요 금융허브 · USA.NY</div></div><span class="pill dev">기회</span></div><div class="scores"><div class="score"><b>3</b><span>금융</span></div><div class="score"><b>2</b><span>경제</span></div><div class="score"><b>2</b><span>ESG</span></div></div><div class="lens"><div class="box"><b>금융</b>자본규제 완화 논의로 대형은행의 자본여력 확대 가능성.</div><div class="box"><b>경제</b>금리·채권 변동성이 기업금융과 조달비용에 영향.</div><div class="box"><b>ESG</b>기후공시·ESG 정책 변동성이 큼.</div></div><div class="impact"><b>IT/사업 영향</b><br>뉴욕지점은 규제보고, 리스크관리, 자본·유동성 시나리오를 모니터링.</div><div class="links"><a href="https://www.reuters.com/sustainability/boards-policy-regulation/wall-street-banks-plan-final-push-capital-rules-2026-05-07/" target="_blank" rel="noopener noreferrer">Reuters 자본규제 ↗</a></div></article>
-    <article class="card country"><div class="top"><div><h4>일본 · 도쿄</h4><div class="sub">선진국/주요 금융허브 · JPN.TOK</div></div><span class="pill dev">관찰</span></div><div class="scores"><div class="score"><b>3</b><span>금융</span></div><div class="score"><b>3</b><span>경제</span></div><div class="score"><b>2</b><span>ESG</span></div></div><div class="lens"><div class="box"><b>금융</b>NBFI·해외펀드발 금융시스템 리스크 주의.</div><div class="box"><b>경제</b>에너지·물가·채권금리 부담 확대.</div><div class="box"><b>ESG</b>에너지 비용과 전환금융 이슈 확대 가능.</div></div><div class="impact"><b>IT/사업 영향</b><br>시장 급변 시 리스크 한도, 거래상대방, 유동성 모니터링 강화.</div><div class="links"><a href="https://www.reuters.com/sustainability/boards-policy-regulation/boj-warns-financial-system-risks-investment-fund-activity-2026-05-15/" target="_blank" rel="noopener noreferrer">Reuters BOJ ↗</a></div></article>
-    <article class="card country"><div class="top"><div><h4>영국 · 런던</h4><div class="sub">선진국/주요 금융허브 · UK.LON</div></div><span class="pill dev">규제완화</span></div><div class="scores"><div class="score"><b>3</b><span>금융</span></div><div class="score"><b>2</b><span>경제</span></div><div class="score"><b>2</b><span>ESG</span></div></div><div class="lens"><div class="box"><b>금융</b>Ring-fencing 완화로 은행 운영·대출 경쟁 변화.</div><div class="box"><b>경제</b>SME 금융공급과 성장지원 논리 부각.</div><div class="box"><b>ESG</b>MMF·금융안정 규제와 병행 관찰 필요.</div></div><div class="impact"><b>IT/사업 영향</b><br>공유서비스·아웃소싱·내부통제 분리 기준 재점검.</div><div class="links"><a href="https://www.reuters.com/sustainability/boards-policy-regulation/britains-government-update-banks-ring-fencing-regime-2026-05-13/" target="_blank" rel="noopener noreferrer">Reuters UK Ring-fencing ↗</a></div></article>
-    <article class="card country"><div class="top"><div><h4>중국</h4><div class="sub">주요시장 · CHN.SHA</div></div><span class="pill dev">감독강화</span></div><div class="scores"><div class="score"><b>4</b><span>금융</span></div><div class="score"><b>3</b><span>경제</span></div><div class="score"><b>3</b><span>ESG</span></div></div><div class="lens"><div class="box"><b>금융</b>금융감독 기본법 초안으로 AML·소비자보호 강화.</div><div class="box"><b>경제</b>제조·전략산업 중심 성장 전환.</div><div class="box"><b>ESG</b>전기차·재생에너지 공급망과 무역마찰 병존.</div></div><div class="impact"><b>IT/사업 영향</b><br>데이터, 제재, AML, 감독보고 요건을 우선 점검.</div><div class="links"><a href="https://www.reuters.com/sustainability/boards-policy-regulation/china-proposes-stricter-financial-oversight-draft-law-2026-03-20/" target="_blank" rel="noopener noreferrer">Reuters 중국 감독법 ↗</a></div></article>
-    <article class="card country"><div class="top"><div><h4>베트남</h4><div class="sub">동남아 · VNM.HCM</div></div><span class="pill sea">성장둔화</span></div><div class="scores"><div class="score"><b>3</b><span>금융</span></div><div class="score"><b>3</b><span>경제</span></div><div class="score"><b>3</b><span>ESG</span></div></div><div class="lens"><div class="box"><b>금융</b>수출·제조업 둔화가 여신 품질에 영향 가능.</div><div class="box"><b>경제</b>2026년 성장률은 둔화 전망이나 여전히 견조.</div><div class="box"><b>ESG</b>전력수요 급증과 EV 세제지원이 관찰 포인트.</div></div><div class="impact"><b>IT/사업 영향</b><br>전력·망·DR·디지털 채널 성능 점검 필요.</div><div class="links"><a href="https://www.worldbank.org/ext/en/country/vietnam" target="_blank" rel="noopener noreferrer">World Bank Vietnam ↗</a><a href="https://www.reuters.com/sustainability/boards-policy-regulation/vietnam-urges-businesses-households-cut-electricity-use-consumption-reaches-year-2026-05-15/" target="_blank" rel="noopener noreferrer">Reuters 전력수요 ↗</a></div></article>
-    <article class="card country"><div class="top"><div><h4>미얀마</h4><div class="sub">동남아 · MMR.YGN</div></div><span class="pill risk">고위험</span></div><div class="scores"><div class="score"><b>5</b><span>금융</span></div><div class="score"><b>4</b><span>경제</span></div><div class="score"><b>5</b><span>ESG</span></div></div><div class="lens"><div class="box"><b>금융</b>제재·환거래·AML 리스크 우선.</div><div class="box"><b>경제</b>내전·정치 불안으로 성장보다 운영연속성이 핵심.</div><div class="box"><b>ESG</b>인권·평판·거래상대방 리스크가 큼.</div></div><div class="impact"><b>IT/사업 영향</b><br>신규 확대보다 제재필터링, 고객확인, 운영연속성 관리 우선.</div><div class="links"><a href="https://www.reuters.com/world/asia-pacific/eu-extends-sanctions-against-myanmar-by-year-2026-04-27/" target="_blank" rel="noopener noreferrer">Reuters EU 제재 ↗</a></div></article>
-    <article class="card country"><div class="top"><div><h4>캄보디아 · KB PRASAC</h4><div class="sub">동남아/인오가닉 · KHM.PRS</div></div><span class="pill sea">ESG</span></div><div class="scores"><div class="score"><b>3</b><span>금융</span></div><div class="score"><b>3</b><span>경제</span></div><div class="score"><b>4</b><span>ESG</span></div></div><div class="lens"><div class="box"><b>금융</b>신용품질·부실관리·상업은행 전환 후 수익성 관리.</div><div class="box"><b>경제</b>민간부채와 소비여력 점검 필요.</div><div class="box"><b>ESG</b>녹색금융 taxonomy로 여신분류·공시 체계 필요.</div></div><div class="impact"><b>IT/사업 영향</b><br>여신심사·사후관리·ESG 데이터 항목 연계 필요.</div><div class="links"><a href="https://www.nbc.gov.kh/english/news_and_events/news_info.php?id=897" target="_blank" rel="noopener noreferrer">NBC Taxonomy ↗</a></div></article>
-    <article class="card country"><div class="top"><div><h4>인도네시아 · KBI</h4><div class="sub">동남아/인오가닉 · IDN.KBI</div></div><span class="pill sea">디지털</span></div><div class="scores"><div class="score"><b>3</b><span>금융</span></div><div class="score"><b>3</b><span>경제</span></div><div class="score"><b>3</b><span>ESG</span></div></div><div class="lens"><div class="box"><b>금융</b>OJK 기준 은행권 유동성·자본·NPL은 안정적.</div><div class="box"><b>경제</b>성장 목표와 투자정책이 여신기회로 연결 가능.</div><div class="box"><b>ESG</b>디지털금융, 지속가능금융, 지배구조 관찰.</div></div><div class="impact"><b>IT/사업 영향</b><br>QRIS 연계 등 지급결제 확대에 맞춘 보안·망·채널 안정성 점검.</div><div class="links"><a href="https://ojk.go.id/en/berita-dan-kegiatan/siaran-pers/Pages/April-2026-The-Board-of-Commissioners-Monthly-Meeting-Financial-Services-Sector-Performance-Remains-Resilient.aspx" target="_blank" rel="noopener noreferrer">OJK 안정성 ↗</a><a href="https://ojk.go.id/en/berita-dan-kegiatan/siaran-pers/Pages/Amid-Global-Uncertainty-Supported-by-Policy-Coordination-and-Synergy-Among-Authorities.aspx" target="_blank" rel="noopener noreferrer">QRIS 연계 ↗</a></div></article>
-  </section>
-  <p class="footer">※ 중국은 엄밀한 의미의 선진국 분류가 아니라 ‘주요시장/주요 금융권’으로 별도 관리하는 것이 정확합니다. 본 화면에서는 경영진 보고 흐름상 선진국·주요 금융허브 묶음에 함께 배치했습니다.</p>
-</main>
+<!-- ━━━━━━━━━━━━━━━━ 3. EXECUTIVE SUMMARY ━━━━━━━━━━━━━━━━ -->
+<div class="summary-box">
+  <div class="sum-label">EXECUTIVE SUMMARY · 2026.06.13</div>
+  <div class="sum-bullets">
+    <div class="sum-bullet">
+      <span class="cat-badge cat-경제">경제</span>
+      <span class="sum-text">6/17 연준 FOMC · 6/18 BOE MPC 결정 임박 — 중동 에너지 물가 재확산으로 금리 인상 가능성 부상</span>
+    </div>
+    <div class="sum-bullet">
+      <span class="cat-badge cat-금융">금융</span>
+      <span class="sum-text">세계은행 6월 전망 — 중동 분쟁으로 신흥국 성장률 전반 하향, 저소득국 5.4%로 0.3%p↓</span>
+    </div>
+    <div class="sum-bullet">
+      <span class="cat-badge cat-디지털">디지털</span>
+      <span class="sum-text">인도·베트남 RBI·SBV QR 국경간 결제 MoU — 파일럿 협의 본격 착수</span>
+    </div>
+    <div class="sum-bullet">
+      <span class="cat-badge cat-금융사고">금융사고</span>
+      <span class="sum-text">英 NCSC·홍콩 SFC·싱가포르 MAS, 중동 전쟁 빌미 투자사기 급증에 동시 경보</span>
+    </div>
+  </div>
 </div>
+
+<!-- ━━━━━━━━━━━━━━━━ 4. 이 주의 숫자 ━━━━━━━━━━━━━━━━ -->
+<div class="bignum-widget">
+  <div class="bn-eyebrow">이 주의 숫자</div>
+  <div class="bn-main">
+    <span class="bn-number">+$23</span>
+    <span class="bn-unit">/ 배럴</span>
+  </div>
+  <div class="bn-desc">WTI 유가 상승폭 · 미·이란 분쟁 이후</div>
+  <div class="bn-context">에너지 가격 급등이 글로벌 인플레이션을 재점화하며 주요국 금리 인하 기대를 소멸시키고 있습니다</div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━ 5. HOOK BAR ━━━━━━━━━━━━━━━━ -->
+<div class="hook-bar" id="hookBar"></div>
+
+<!-- ━━━━━━━━━━━━━━━━ 6. TODAY'S TOP 3 ━━━━━━━━━━━━━━━━ -->
+<section class="headline-section">
+  <div class="hs-slogan">CONNECTING PEOPLE CREATING GLOBAL VALUE</div>
+  <div class="hs-eyebrow">
+    <span class="hs-rule"></span>
+    <span class="hs-label">TODAY'S TOP 3</span>
+    <span class="hs-rule"></span>
+  </div>
+  <div class="headline-1">
+    <span class="h1-bg-num">01</span>
+    <div class="h1-meta">
+      <span class="cat-badge cat-경제">경제</span>
+      <span class="h1-country">🇬🇧 런던 · Bank of England</span>
+    </div>
+    <h2 class="h1-title">BOE 6월 18일 MPC 결정 임박 — 동결 우세 속 인상 소수의견 부상</h2>
+    <p class="h1-lead">중동 분쟁 장기화로 에너지 물가 재확산. 금리 인하 기대 소멸, 하반기 인상 시나리오 가격 반영 시작.</p>
+  </div>
+  <div class="headline-23">
+    <div class="hl-card">
+      <span class="hl-bg-num">02</span>
+      <div class="hl-num-badge">02</div>
+      <div class="hl-meta">
+        <span class="cat-badge cat-경제">경제</span>
+        <span class="hl-country">🇺🇸 뉴욕</span>
+      </div>
+      <p class="hl-title">연준 6/17 FOMC 동결 확실 — 하반기 인상 가능성 선물 시장 반영 시작</p>
+    </div>
+    <div class="hl-card">
+      <span class="hl-bg-num">03</span>
+      <div class="hl-num-badge">03</div>
+      <div class="hl-meta">
+        <span class="cat-badge cat-금융">금융</span>
+        <span class="hl-country">🌐 글로벌</span>
+      </div>
+      <p class="hl-title">세계은행 6월 전망 — 중동 분쟁으로 신흥국 성장률 전반 하향 조정</p>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━ 7. 거점 타임바 ━━━━━━━━━━━━━━━━ -->
+<div class="timebar-wrap">
+  <div class="timebar-label">실시간 거점 현황</div>
+  <div class="timebar-scroll" id="timebarScroll"></div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━ 8. 메인 3탭 ━━━━━━━━━━━━━━━━ -->
+<div class="main-tabs">
+  <button class="main-tab active" onclick="switchMain(0)">
+    <span class="tab-icon">🌏</span>진출국가
+  </button>
+  <button class="main-tab" onclick="switchMain(1)">
+    <span class="tab-icon">🏦</span>국외연결<br>자회사
+  </button>
+  <button class="main-tab" onclick="switchMain(2)">
+    <span class="tab-icon">📡</span>글로벌<br>동향
+  </button>
+</div>
+
+<!-- 패널 1: 진출국가 -->
+<div class="panel visible" id="panel-0">
+  <nav class="sub-nav"><div class="chip-row" id="branchRow"></div></nav>
+  <div class="country-head" id="branchHead"></div>
+  <div class="indicators" id="branchInd"></div>
+  <section class="news-list" id="branchNews"></section>
+</div>
+
+<!-- 패널 2: 국외연결자회사 -->
+<div class="panel" id="panel-1">
+  <nav class="sub-nav"><div class="chip-row" id="subRow"></div></nav>
+  <div class="country-head" id="subHead"></div>
+  <div class="indicators" id="subInd"></div>
+  <section class="news-list" id="subNews"></section>
+</div>
+
+<!-- 패널 3: 글로벌 동향 -->
+<div class="panel" id="panel-2">
+  <div class="global-section">
+    <h2>🌐 오늘의 글로벌 TOP 5</h2>
+    <div id="globalTop5"></div>
+  </div>
+  <div class="global-section" style="padding-bottom:8px;">
+    <h2>카테고리별 동향</h2>
+  </div>
+  <div id="globalCats"></div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━ 9. 게임존 ━━━━━━━━━━━━━━━━ -->
+<section class="game-zone-full" id="gameAnchor">
+  <div class="game-zone-title">
+    <span class="gz-line"></span>
+    <span class="gz-label">오늘의 참여 코너</span>
+    <span class="gz-line"></span>
+  </div>
+  <div class="gz-section-label">📊 어제의 예측 결과</div>
+  <div class="yesterday-box" id="yesterdayBox"></div>
+  <div class="predict-box" id="predictBox"></div>
+  <div class="quiz-box" id="quizBox"></div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━ 10. FOOTER ━━━━━━━━━━━━━━━━ -->
+<footer>
+  <p>본 브리핑은 AI 기반 글로벌 뉴스 플랫폼이 각국 중앙은행·금융당국(Tier 0) 및 주요 언론(Tier 1–2) 자료를 수집·요약해 자동 생성한 자료입니다. 수치와 기사는 목업용 샘플이며, 투자 판단의 근거로 사용할 수 없습니다.</p>
+  <div class="footer-slogan"><span>CONNECTING PEOPLE CREATING GLOBAL VALUE</span></div>
+</footer>
+</div>
+
+<script>
+
+/* ━━━ 거점 타임바 ━━━ */
+const TIMEZONES = [
+  {name:'런던',   flag:'🇬🇧', tz:'Europe/London',      sub:false},
+  {name:'뉴욕',   flag:'🇺🇸', tz:'America/New_York',   sub:false},
+  {name:'동경',   flag:'🇯🇵', tz:'Asia/Tokyo',         sub:false},
+  {name:'홍콩',   flag:'🇭🇰', tz:'Asia/Hong_Kong',     sub:false},
+  {name:'싱가포르',flag:'🇸🇬', tz:'Asia/Singapore',    sub:false},
+  {name:'중국',   flag:'🇨🇳', tz:'Asia/Shanghai',      sub:false},
+  {name:'베트남', flag:'🇻🇳', tz:'Asia/Ho_Chi_Minh',   sub:false},
+  {name:'인도',   flag:'🇮🇳', tz:'Asia/Kolkata',       sub:false},
+  {name:'미얀마', flag:'🇲🇲', tz:'Asia/Rangoon',       sub:false},
+  {name:'오클랜드',flag:'🇳🇿', tz:'Pacific/Auckland',  sub:false},
+  {name:'인도네시아',flag:'🇮🇩',tz:'Asia/Jakarta',     sub:true},
+  {name:'캄보디아',flag:'🇰🇭', tz:'Asia/Phnom_Penh',   sub:true},
+];
+function getLocalTime(tz){
+  return new Date().toLocaleTimeString('ko-KR',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false});
+}
+function buildTimebar(){
+  const el = document.getElementById('timebarScroll');
+  if(!el) return;
+  el.innerHTML = TIMEZONES.map(loc=>`
+    <div class="tb-chip${loc.sub?' sub-loc':''}">
+      <span class="tb-flag">${loc.flag}</span>
+      <span class="tb-name">${loc.name}</span>
+      <span class="tb-time" id="tbtime-${loc.tz.replace(/\//g,'-')}">${getLocalTime(loc.tz)}</span>
+    </div>`).join('');
+}
+function updateTimebar(){
+  TIMEZONES.forEach(loc=>{
+    const el = document.getElementById('tbtime-'+loc.tz.replace(/\//g,'-'));
+    if(el) el.textContent = getLocalTime(loc.tz);
+  });
+}
+buildTimebar();
+setInterval(updateTimebar, 30000);
+
+/* ════════════════════════════════
+   데이터 — 2026.06.13(토) 실시간 업데이트
+   * 주요 배경: 2026.02.28 미·이란 군사 충돌(에픽 퓨리 작전) 이후
+     유가 급등·인플레이션 재확산이 글로벌 통화정책의 핵심 변수로 작용 중
+   * 이번 주 최대 이벤트: 6/17 연준 FOMC · 6/18 BOE MPC 결정
+════════════════════════════════ */
+
+/* 진출국가 */
+const BRANCHES = [
+  { name:"런던", flag:"🇬🇧", type:"지점",
+    indicators:[
+      {label:"기준금리(BOE)",value:"3.75%",delta:"동결",dir:0},
+      {label:"GBP/KRW",value:"1,798.4",delta:"+0.3%",dir:1},
+      {label:"FTSE 100",value:"8,247",delta:"-0.5%",dir:-1}],
+    news:[
+      {cat:"경제",tier:0,source:"Bank of England",
+       title:"6월 18일 MPC 결정 임박 — 동결 전망 우세, 인상 소수의견 부상",
+       body:"이번 주 목요일 MPC 회의에서 기준금리 3.75% 동결이 유력하나, 중동 분쟁 장기화로 유가·에너지 가격이 재차 오르면서 일부 위원이 인상 가능성을 시사. BOE는 인플레이션이 2% 목표로 돌아오는 시점이 당초 전망보다 지연될 것이라 경고.",
+       implication:"런던지점 GBP 조달비용 단기 상방 리스크 — 하반기 금리 시나리오 재점검 필요"},
+      {cat:"금융사고",tier:1,source:"Financial Times",
+       title:"중동 분쟁 여파 — 런던 에너지 선물시장 사이버 보안 경보 격상",
+       body:"영국 사이버보안센터(NCSC)가 중동 지정학적 긴장 고조를 배경으로 에너지·금융 인프라를 겨냥한 사이버 공격 시도가 급증했다고 경보. ICE 런던 원자재 거래소가 비상 대응 체계를 강화.",
+       implication:"런던지점 IT 보안 컨트롤 및 사이버 대응 절차 점검 권고"}]},
+
+  { name:"뉴욕", flag:"🇺🇸", type:"지점",
+    indicators:[
+      {label:"기준금리(Fed)",value:"3.50~3.75%",delta:"동결",dir:0},
+      {label:"USD/KRW",value:"1,389.5",delta:"+0.6%",dir:1},
+      {label:"美 10Y 국채",value:"4.42%",delta:"+5bp",dir:1}],
+    news:[
+      {cat:"경제",tier:0,source:"Federal Reserve",
+       title:"6월 17일 FOMC 앞두고 동결 유력 — 중동 인플레이션 불확실성 지속",
+       body:"연준은 4월 29일 회의에서 기준금리를 3.50~3.75%로 동결. 이번 주 6월 17~18일 FOMC에서도 동결이 기정사실화되는 가운데, 중동 전쟁 여파로 에너지 가격이 재차 오르면서 하반기 인하 기대는 사실상 소멸. 선물 시장은 연내 인상 가능성까지 반영하기 시작.",
+       implication:"달러 강세 지속 전망 — 뉴욕지점 외화자금 조달비용 및 환리스크 재산정 필요"},
+      {cat:"금융",tier:0,source:"Federal Reserve",
+       title:"연준, 6월 24일 연례 은행 스트레스 테스트 결과 발표 예정",
+       body:"Fed는 오는 6월 24일(수) 오후 4시(미국 동부시간) 주요 대형은행 대상 연례 스트레스 테스트 결과를 공개할 예정. 중동 지정학 리스크와 에너지 가격 급등이 심사 시나리오에 반영된 첫 테스트로 시장의 관심 집중.",
+       implication:"글로벌 은행권 자본건전성 지표 확인 — 결과에 따라 유동성 규제 강화 논의 재점화 가능"}]},
+
+  { name:"동경", flag:"🇯🇵", type:"지점",
+    indicators:[
+      {label:"기준금리(BOJ)",value:"0.75%",delta:"동결",dir:0},
+      {label:"JPY/KRW(100)",value:"916.8",delta:"-0.4%",dir:-1},
+      {label:"Nikkei 225",value:"39,850",delta:"-0.7%",dir:-1}],
+    news:[
+      {cat:"경제",tier:0,source:"日本銀行(BOJ)",
+       title:"BOJ, 연내 정책금리 1% 인상 전망 — 사나에노믹스 성장 기대 배경",
+       body:"다카이치 사나에 총리의 경제 정책(사나에노믹스)이 임금 인상과 내수 소비 진작을 촉진하면서 BOJ는 선진국 중 유일하게 추가 긴축을 예고. J.P. 모건 등 주요 IB는 연내 1회 이상 인상으로 정책금리가 1%에 도달할 것으로 전망.",
+       implication:"엔화 강세 전환 시나리오 대비 — 동경지점 엔화 조달·헤지 전략 점검 필요"},
+      {cat:"경제",tier:1,source:"닛케이(Nikkei)",
+       title:"중동 분쟁 장기화, 일본 에너지 수입비용 급등 — 기업 수익 압박",
+       body:"호르무즈 해협 리스크로 LNG·원유 수입단가가 전년 대비 30% 이상 급등하며 일본 제조업과 수출기업의 수익성이 악화. 정부는 에너지 보조금 재가동을 검토 중.",
+       implication:null}]},
+
+  { name:"홍콩", flag:"🇭🇰", type:"지점",
+    indicators:[
+      {label:"기준금리(HKMA)",value:"3.75%",delta:"동결",dir:0},
+      {label:"HKD/KRW",value:"178.6",delta:"+0.2%",dir:1},
+      {label:"항셍지수",value:"23,410",delta:"-1.1%",dir:-1}],
+    news:[
+      {cat:"금융",tier:0,source:"HKMA",
+       title:"HKMA, 미·이란 분쟁 여파 금융시장 모니터링 강화",
+       body:"HKMA는 중동 지정학 리스크가 글로벌 자본 흐름에 미치는 영향을 면밀히 모니터링 중이라고 발표. USD 페그제 하에서 연준과 동조 긴축 가능성이 부상하면서 홍콩 주택담보대출 금리 상방 압력 증가.",
+       implication:"홍콩지점 단기 조달구조 점검 — HIBOR 연동 대출 리스크 재평가 필요"},
+      {cat:"금융사고",tier:1,source:"SCMP",
+       title:"홍콩 금융당국, 중동 긴장 활용한 투자사기 급증에 경보",
+       body:"중동 전쟁을 빌미로 한 '유가 급등 수혜 투자' 사기가 SNS를 통해 확산되자 SFC가 소비자 경보를 발령. 가짜 원자재 펀드 수법이 특히 기승.",
+       implication:"고객 투자사기 모니터링 및 직원 대상 사기 유형 교육 실시 권고"}]},
+
+  { name:"싱가포르", flag:"🇸🇬", type:"지점",
+    indicators:[
+      {label:"3M SORA",value:"2.38%",delta:"-1bp",dir:-1},
+      {label:"SGD/KRW",value:"1,031.5",delta:"+0.4%",dir:1},
+      {label:"STI",value:"3,876",delta:"-0.6%",dir:-1}],
+    news:[
+      {cat:"경제",tier:0,source:"MAS",
+       title:"MAS, 중동발 공급 충격 속 인플레이션 모니터링 강화",
+       body:"MAS는 중동 분쟁 장기화로 에너지·식품 수입물가가 상승 압력을 받고 있다고 경고. 통화정책 밴드 조정 가능성을 열어두되 현 시점에서는 S$NEER 관리 기조를 유지한다는 입장.",
+       implication:"싱가포르 거점 무역금융 고객의 원자재 수입 원가 상승 영향 모니터링 필요"},
+      {cat:"ESG",tier:0,source:"MAS",
+       title:"ECB, 유로의 국제적 역할 보고서 발표 — 아시아 거래 비중 확대 언급",
+       body:"ECB가 발표한 '유로의 국제적 역할 2026' 보고서에서 아시아 중앙은행의 유로화 준비자산 비중이 2년 연속 증가했으며 싱가포르가 역외 유로화 결제 허브로 역할을 강화하고 있다고 분석.",
+       implication:"싱가포르지점 유로화 결제·무역금융 서비스 확대 기회 검토"}]},
+
+  { name:"중국", flag:"🇨🇳", type:"법인",
+    indicators:[
+      {label:"LPR(1Y)",value:"2.90%",delta:"동결",dir:0},
+      {label:"CNY/KRW",value:"191.2",delta:"+0.3%",dir:1},
+      {label:"CSI 300",value:"3,748",delta:"-0.4%",dir:-1}],
+    news:[
+      {cat:"경제",tier:0,source:"인민은행(PBoC)",
+       title:"중국 2026년 성장률 4.5% 전망 — AI·로봇 전략산업 투자가 성장 견인",
+       body:"한국 기획재정부·KIEP 전망에 따르면 중국은 AI·로봇·반도체 등 전략산업 투자 확대와 적극적 재정정책으로 부동산 부진과 내수 약세를 만회하며 4.5% 성장이 가능할 전망. 다만 중동 전쟁발 에너지 비용 상승과 미·중 갈등 재점화 가능성이 하방 리스크.",
+       implication:"중국 법인 전략산업 고객 여신 기회 탐색 — 에너지 관련 여신 리스크 재점검 병행"},
+      {cat:"금융",tier:1,source:"Caixin",
+       title:"중국 국유은행, 중동 사태 이후 외환 매입 확대 — 위안화 안정 수호",
+       body:"미·이란 분쟁 여파로 달러 강세가 지속되자 중국 국유은행들이 대규모 달러 매도·위안화 매입으로 환율 방어에 나섰다고 보도. 1월 기준 국유은행 외화 매입 규모 1,000억 달러를 상회.",
+       implication:"위안화 환율 변동성 확대 시 법인 외환 포지션 관리 리스크 점검 필요"}]},
+
+  { name:"베트남", flag:"🇻🇳", type:"지점",
+    indicators:[
+      {label:"기준금리(SBV)",value:"4.50%",delta:"동결",dir:0},
+      {label:"VND/KRW(100)",value:"5.34",delta:"-0.1%",dir:-1},
+      {label:"VN-Index",value:"1,388",delta:"-0.6%",dir:-1}],
+    news:[
+      {cat:"디지털",tier:0,source:"베트남중앙은행(SBV)·RBI",
+       title:"SBV·RBI, 5월 디지털 결제 MoU 후속 — QR 국경간 결제 시범 협의 착수",
+       body:"RBI와 SBV가 5월 5일 체결한 디지털 결제 협력 MoU에 따라 양국은 QR코드 기반 국경간 결제 연동을 위한 기술 표준 협의를 착수. 인도·베트남 간 무역·관광 결제 간편화가 목표로 연내 파일럿 운영 예정.",
+       implication:"베트남 진출 인도계 기업 대상 무역결제 서비스 확대 기회 — QR 연동 시점 모니터링 필요"},
+      {cat:"경제",tier:1,source:"VnExpress",
+       title:"중동 분쟁 여파 비료 가격 급등 — 베트남 농업 부문 원가 압박",
+       body:"국제 비료 가격이 중동 지정학 긴장으로 급격히 오르면서 베트남 농업 부문이 새 파종기를 앞두고 비용 압박에 직면. 국내 수출 품목인 쌀·새우·커피의 채산성 악화 우려.",
+       implication:null}]},
+
+  { name:"인도", flag:"🇮🇳", type:"지점",
+    indicators:[
+      {label:"기준금리(RBI)",value:"5.25%",delta:"-25bp",dir:-1},
+      {label:"INR/KRW",value:"16.05",delta:"-0.4%",dir:-1},
+      {label:"Sensex",value:"82,340",delta:"-0.8%",dir:-1}],
+    news:[
+      {cat:"디지털",tier:0,source:"인도중앙은행(RBI)",
+       title:"RBI·SBV 디지털 결제 MoU 체결(5/5) — 인·베 QR 국경간 결제 협력 본격화",
+       body:"RBI와 베트남중앙은행(SBV)이 5월 5일 디지털 결제·금융혁신 협력 MoU를 체결하고 국경간 QR코드 결제 연동을 추진 중. 양국 무역·관광 거래 실시간화·비용 절감이 목표이며 RBI는 핀테크 허브로 인도의 위상 강화를 강조.",
+       implication:"인도·베트남 두 거점의 협업 기회 — 인도계 기업의 베트남 투자·무역 결제 서비스 연계 방안 검토"},
+      {cat:"경제",tier:1,source:"Economic Times",
+       title:"중동 에너지 가격 상승, 인도 경상수지 적자 확대 우려",
+       body:"호르무즈 해협 리스크로 원유 수입단가가 급등하면서 인도의 2026년 경상수지 적자가 GDP의 2.5%까지 확대될 수 있다는 전망이 제기. 루피화 약세 압력이 이어지는 가운데 RBI는 외환보유고를 활용한 환율 방어에 나서고 있음.",
+       implication:"루피화 약세 지속 시 인도지점 INR 여신 환리스크 관리 강화 검토"}]},
+
+  { name:"미얀마", flag:"🇲🇲", type:"법인",
+    indicators:[
+      {label:"기준금리(CBM)",value:"7.00%",delta:"동결",dir:0},
+      {label:"MMK/KRW(100)",value:"6.41",delta:"-0.5%",dir:-1},
+      {label:"공정환율(USD)",value:"2,100",delta:"고정",dir:0}],
+    news:[
+      {cat:"경제",tier:2,source:"Myanmar Times",
+       title:"글로벌 에너지 가격 급등, 미얀마 수입 물가 상승 — 외화 부족 심화",
+       body:"중동 분쟁 여파로 국제 유가가 오르면서 미얀마 연료 수입 비용이 급등. 이미 외화 부족으로 공식·시장 환율 이중 구조가 고착화된 상황에서 외화 유동성 악화 우려가 더욱 커지고 있음.",
+       implication:"현지법인 외화 조달 및 송금 리스크 모니터링 — 외화 의무매각 비율 정책 변화 주시"},
+      {cat:"금융",tier:0,source:"미얀마중앙은행(CBM)",
+       title:"CBM, 외화 의무매각 규정 35%로 완화 유지 — 추가 조정 검토 중",
+       body:"CBM은 지난 분기 수출기업 외화 의무매각 비율을 50%에서 35%로 낮춘 조치를 유지하고 있으며, 추가 완화 여부를 에너지 물가 동향과 연계해 검토 중이라고 밝힘.",
+       implication:null}]},
+
+  { name:"오클랜드", flag:"🇳🇿", type:"지점",
+    indicators:[
+      {label:"기준금리(RBNZ)",value:"3.25%",delta:"동결",dir:0},
+      {label:"NZD/KRW",value:"802.1",delta:"-0.3%",dir:-1},
+      {label:"NZX 50",value:"12,280",delta:"-0.2%",dir:-1}],
+    news:[
+      {cat:"경제",tier:0,source:"뉴질랜드중앙은행(RBNZ)",
+       title:"RBNZ, 중동 에너지 가격 상승에 추가 인하 중단 — 동결 기조 전환",
+       body:"J.P. 모건 등 주요 IB는 RBNZ가 2026년 동안 금리를 동결 유지할 것으로 전망. 중동 분쟁 여파로 에너지·식품 물가가 재차 오르며 추가 인하 여력이 줄어든 상황.",
+       implication:"NZD 약세 압력 지속 — 오클랜드지점 NZD 조달 및 환 헤지 전략 재검토"},
+      {cat:"ESG",tier:1,source:"NZ Herald",
+       title:"뉴질랜드 기후공시(CRD) 2년차 — 스코프3 산정 미비 공통 지적",
+       body:"FMA(금융시장감독원)가 2년차 CRD 의무공시 품질 점검 결과를 발표하며 스코프3 배출량 산정 미비가 금융기관 전반의 공통 지적사항이라고 밝힘. 시정 요구와 함께 내년부터 제재 절차 강화 예정.",
+       implication:null}]}
+];
+
+/* 국외연결자회사 */
+const SUBS = [
+  { name:"인도네시아", flag:"🇮🇩", type:"자회사", entity:"KBI은행",
+    indicators:[
+      {label:"기준금리(BI)",value:"5.50%",delta:"동결",dir:0},
+      {label:"IDR/KRW(100)",value:"8.31",delta:"-0.3%",dir:-1},
+      {label:"자카르타종합",value:"7,210",delta:"-0.9%",dir:-1}],
+    news:[
+      {cat:"경제",tier:0,source:"인도네시아중앙은행(BI)",
+       title:"BI, 중동 분쟁 여파 에너지 수입 부담 증가 — 금리 동결 유지",
+       body:"세계은행 6월 글로벌경제전망에 따르면 중동 분쟁으로 신흥국 전반의 성장률이 하향됐으며 인도네시아도 에너지 수입 비용 상승으로 경상수지 압박이 커지고 있음. BI는 루피아 방어를 위해 금리를 5.50%로 동결.",
+       implication:"KBI은행 조달비용 단기 안정 — 단 루피아 약세 지속 시 외화여신 환리스크 점검 필요"},
+      {cat:"금융",tier:0,source:"OJK",
+       title:"OJK, 외국계 은행 디지털 전환 점검 — 클라우드 전환 기준 준수 확인",
+       body:"OJK가 외국계 은행의 디지털 전환 로드맵 이행 현황 점검에 착수. 코어뱅킹 클라우드 전환 기준 미비 기관에 대해서는 시정 권고 및 경영개선 조치가 뒤따를 예정.",
+       implication:"KBI 차세대 시스템 전환 일정 OJK 기준과의 정합성 재확인 필요"}]},
+
+  { name:"캄보디아", flag:"🇰🇭", type:"자회사", entity:"프라삭은행",
+    indicators:[
+      {label:"지준율(NBC)",value:"9.0%",delta:"동결",dir:0},
+      {label:"KHR/KRW(100)",value:"33.5",delta:"0.0%",dir:0},
+      {label:"달러화율",value:"약 80%",delta:"―",dir:0}],
+    news:[
+      {cat:"경제",tier:0,source:"세계은행(World Bank)",
+       title:"세계은행 6월 글로벌경제전망 — 저소득국 성장률 5.4%로 0.3%p 하향",
+       body:"세계은행이 발표한 6월 글로벌경제전망에서 중동 분쟁 여파로 저소득국(LIC) 성장률 전망이 5.4%로 0.3%p 하향 조정됐으며 캄보디아도 에너지·비료 수입비용 상승으로 성장 모멘텀이 다소 둔화될 전망.",
+       implication:"프라삭은행 농업·소매금융 차주의 상환능력 모니터링 강화 필요"},
+      {cat:"디지털",tier:1,source:"Khmer Times",
+       title:"바콩(Bakong) QR 결제, 베트남 연동 이후 거래량 빠르게 증가",
+       body:"NBC 블록체인 결제망 바콩의 베트남 QR 상호연동 개시 이후 국경 상인·관광객 중심으로 거래량이 빠른 속도로 늘고 있으며, NBC는 태국·싱가포르와의 추가 연동 협의를 진행 중.",
+       implication:"프라삭 리테일 고객 바콩 연계 서비스 확대로 수수료 수익 증가 기대"}]}
+];
+
+/* 글로벌 동향 TOP5 — 2026.06.13 기준 */
+const GLOBAL_TOP5 = [
+  {cat:"경제",region:"글로벌",flag:"🌐",
+   title:"세계은행 6월 글로벌경제전망 — 중동 분쟁으로 신흥국 성장률 전반 하향",
+   body:"세계은행이 발표한 6월 글로벌경제전망(GEP)에서 2026년 글로벌 성장률이 중동 분쟁 여파로 신흥국 전반에 걸쳐 하향 조정. 남아시아가 최고 성장 지역이나, 중동·북아프리카 지역의 타격이 가장 크고 저소득국 성장률도 0.3%p 하향."},
+  {cat:"경제",region:"미국",flag:"🇺🇸",
+   title:"6월 17일 연준 FOMC 동결 확실시 — 하반기 인상 가능성 가격 반영 시작",
+   body:"연준이 이번 주 FOMC에서 기준금리를 3.50~3.75%로 동결할 것이 확실시되나, 중동 전쟁발 에너지 인플레이션 재확산으로 선물 시장은 연내 인상 가능성을 조심스럽게 반영하기 시작. 6월 24일 은행 스트레스 테스트 결과도 주목."},
+  {cat:"금융",region:"유럽",flag:"🇪🇺",
+   title:"ECB 5월 금융안정보고서 — 에너지 가격·통화정책 기대가 핵심 리스크",
+   body:"ECB가 발표한 5월 금융안정보고서(FSR)에서 중동 전쟁 이후 시장 변동성이 확대되고 초점이 AI 리스크에서 에너지 가격·통화정책 기대·국채 취약성으로 이동했다고 분석. 주식·회사채 시장은 일부 반등했으나 밸류에이션 고평가는 지속."},
+  {cat:"금융사고",region:"글로벌",flag:"🌐",
+   title:"중동 전쟁 빌미 투자사기 급증 — 각국 금융감독당국 일제 경보",
+   body:"미·이란 분쟁 이후 '유가 급등 수혜 투자' 명목의 금융사기가 SNS·메신저를 통해 전 세계적으로 확산. 영국 FCA·홍콩 SFC·싱가포르 MAS가 잇따라 소비자 경보를 발령하고 불법 투자권유 집중 점검에 착수."},
+  {cat:"경제",region:"영국",flag:"🇬🇧",
+   title:"6월 18일 BOE MPC 결정 — 동결 전망 우세, 인상 소수의견 부상",
+   body:"BOE 통화정책위가 이번 주 목요일 기준금리 결정을 발표. 현재 3.75% 동결이 유력하나 중동 분쟁으로 인한 에너지 물가 재상승으로 일부 위원이 인상 필요성을 주장. 하반기 인상 가능성도 배제할 수 없는 상황."},
+];
+
+/* 글로벌 동향 카테고리별 */
+const GLOBAL_CATS = [
+  { cat:"경제", items:[
+    {region:"글로벌",flag:"🌐",tier:0,source:"세계은행(World Bank)",
+     title:"6월 GEP — 중동 분쟁으로 신흥국 성장 전반 하향, 2026년 저소득국 5.4%로 0.3%p↓",
+     body:"세계은행 6월 글로벌경제전망에서 중동 분쟁 여파로 신흥·개발도상국 전 지역 성장률이 하향됐으며 에너지 노출도·전략적 비축량·정책 여력에 따라 지역별 영향이 상이. 2027~28년 회복은 에너지 가격 하락에 달렸다고 평가."},
+    {region:"미국",flag:"🇺🇸",tier:0,source:"Federal Reserve",
+     title:"연준 6월 24일 스트레스 테스트 결과 발표 — 중동 리스크 첫 반영",
+     body:"Fed는 6월 24일 오후 4시(EDT) 연례 은행 스트레스 테스트 결과를 공개. 중동 지정학 리스크와 에너지 가격 급등 시나리오가 처음으로 심사에 반영된 테스트로, 결과에 따라 글로벌 은행권의 자본 규제 강화 논의가 재점화될 수 있음."}]},
+  { cat:"금융", items:[
+    {region:"유럽",flag:"🇪🇺",tier:0,source:"ECB",
+     title:"ECB 5월 FSR — 에너지·통화정책 불확실성이 금융안정의 핵심 리스크로 부상",
+     body:"ECB 금융안정보고서는 중동 전쟁 발발 이후 글로벌 금융 안정 리스크가 높아졌으며 고부채·국채 수익률 상승이 인플레이션 압력과 맞물려 금융 불안을 증폭시킬 수 있다고 경고. 주식 밸류에이션 고평가와 회사채 리스크 프리미엄 확대도 위험 요인."},
+    {region:"미국",flag:"🇺🇸",tier:1,source:"Wells Fargo",
+     title:"파월 의장 마지막 FOMC 주재 가능성 — 6월 17일 회의 기준금리 동결 전망",
+     body:"웰스파고 등 주요 IB는 이번 6월 FOMC가 파월 의장의 마지막 회의일 수 있다며 위원회 내 견해 차이가 심화됐다고 분석. 중동 사태 불확실성으로 중립적 기조가 유지될 전망이며 하반기 인상 가능성도 소수의견으로 제기됨."}]},
+  { cat:"디지털", items:[
+    {region:"인도·베트남",flag:"🇮🇳",tier:0,source:"RBI·SBV",
+     title:"인도·베트남 중앙은행 디지털 결제 MoU(5/5) 후속 — QR 파일럿 협의 착수",
+     body:"RBI와 SBV가 5월 5일 체결한 디지털 결제·금융혁신 협력 MoU에 따라 양국은 국경간 QR코드 결제 연동을 위한 기술 표준 및 규제 협력 협의를 본격화. 무역·관광 결제 투명성과 실시간성 강화가 목표."},
+    {region:"글로벌",flag:"🌐",tier:1,source:"Bloomberg",
+     title:"중동 분쟁 여파에도 글로벌 핀테크 투자 상반기 AI 특화 스타트업 집중",
+     body:"지정학 불확실성에도 2026년 상반기 핀테크 투자의 40% 이상이 AI 기반 금융사기 탐지·신용평가 스타트업에 집중되며 견조한 흐름 유지. 사이버 보안 수요 급증이 주요 동력."}]},
+  { cat:"금융사고", items:[
+    {region:"글로벌",flag:"🌐",tier:0,source:"FCA·SFC·MAS",
+     title:"英·홍콩·싱가포르 금융당국, 중동 전쟁 빌미 투자사기 동시 경보",
+     body:"FCA·SFC·MAS가 미·이란 분쟁 이후 '유가 수혜 투자' 사기가 SNS를 통해 급확산되고 있다며 동시에 소비자 경보를 발령. 가짜 원자재 펀드·에너지 ETF 사칭 수법이 특히 기승."},
+    {region:"영국",flag:"🇬🇧",tier:0,source:"NCSC",
+     title:"영국 NCSC, 에너지·금융 인프라 사이버 공격 경보 격상",
+     body:"영국 국가사이버보안센터(NCSC)가 중동 긴장 고조를 배경으로 에너지 거래소·금융기관을 겨냥한 사이버 공격 시도가 급증했다고 경보를 격상. 금융권 보안 대응 체계 강화 요구."}]},
+  { cat:"ESG", items:[
+    {region:"글로벌",flag:"🌐",tier:0,source:"세계은행",
+     title:"중동 분쟁 장기화, 글로벌 녹색 전환 재원 조달 어려움 가중",
+     body:"세계은행 6월 GEP는 중동 분쟁으로 에너지 가격 고착화 우려가 커지면서 각국의 탈탄소 투자 우선순위가 밀리고 기후 재원 조달 환경도 악화될 수 있다고 지적. 재정 여력이 제한된 저소득국이 특히 취약."},
+    {region:"뉴질랜드",flag:"🇳🇿",tier:0,source:"FMA",
+     title:"뉴질랜드 기후공시(CRD) 2년차 점검 — 스코프3 누락 금융기관 시정 요구",
+     body:"FMA가 CRD 의무공시 2년차 품질 점검 결과 스코프3 온실가스 산정 미비를 공통 지적사항으로 발표. 내년부터 미이행 기관에 단계적 제재가 시작될 예정으로 금융권의 ESG 공시 체계 고도화가 시급."}]}
+];
+
+const TIER_LABEL = {0:"Tier 0 · 당국",1:"Tier 1 · 주요언론",2:"Tier 2 · 현지매체"};
+let branchIdx=0, subIdx=0;
+
+function esc(s){const d=document.createElement("div");d.textContent=s;return d.innerHTML;}
+
+function indHTML(inds){
+  return inds.map(x=>{
+    const cls=x.dir>0?"up":x.dir<0?"down":"flat";
+    const arrow=x.dir>0?"▲":x.dir<0?"▼":"―";
+    return `<div class="indicator">
+      <div class="lbl">${esc(x.label)}</div>
+      <div class="val">${esc(x.value)}</div>
+      <div class="delta ${cls}">${arrow} ${esc(x.delta)}</div>
+    </div>`;
+  }).join("");
+}
+
+function newsHTML(news){
+  return news.map(n=>`
+    <article class="card bar-${n.cat}">
+      <div class="meta">
+        <span class="cat-badge cat-${n.cat}">${n.cat}</span>
+        <span class="tier tier-${n.tier}">${TIER_LABEL[n.tier]}</span>
+        <span class="source">${esc(n.source)}</span>
+      </div>
+      <h3>${esc(n.title)}</h3>
+      <p class="body">${esc(n.body)}</p>
+      ${n.implication?`<div class="implication"><strong>시사점</strong> · ${esc(n.implication)}</div>`:""}
+      <button class="src-link" type="button">원문 보기 →</button>
+    </article>`).join("");
+}
+
+function headHTML(c){
+  const isSub=c.type==="자회사";
+  return `<span class="flag">${c.flag}</span>
+    <span class="cname">${esc(c.name)}</span>
+    <span class="type-badge${isSub?" sub":""}">${c.entity?"자회사 · "+esc(c.entity):esc(c.type)}</span>`;
+}
+
+/* 진출국가 렌더 */
+function renderBranch(){
+  // 칩
+  document.getElementById("branchRow").innerHTML=BRANCHES.map((c,i)=>
+    `<button class="chip${i===branchIdx?" active":""}" onclick="branchIdx=${i};renderBranch()">${c.flag} ${esc(c.name)}</button>`
+  ).join("");
+  const c=BRANCHES[branchIdx];
+  document.getElementById("branchHead").innerHTML=headHTML(c);
+  document.getElementById("branchInd").innerHTML=indHTML(c.indicators);
+  document.getElementById("branchNews").innerHTML=newsHTML(c.news);
+}
+
+/* 자회사 렌더 */
+function renderSub(){
+  document.getElementById("subRow").innerHTML=SUBS.map((c,i)=>
+    `<button class="chip sub-chip${i===subIdx?" active":""}" onclick="subIdx=${i};renderSub()">${c.flag} ${esc(c.name)}<br><span style="font-size:10px;font-weight:600;opacity:.75">${esc(c.entity)}</span></button>`
+  ).join("");
+  const c=SUBS[subIdx];
+  document.getElementById("subHead").innerHTML=headHTML(c);
+  document.getElementById("subInd").innerHTML=indHTML(c.indicators);
+  document.getElementById("subNews").innerHTML=newsHTML(c.news);
+}
+
+/* 글로벌 동향 렌더 */
+function renderGlobal(){
+  // TOP5
+  document.getElementById("globalTop5").innerHTML=GLOBAL_TOP5.map((t,i)=>`
+    <div class="top5-item">
+      <span class="num">${i+1}</span>
+      <div>
+        <div class="t5-meta">
+          <span>${t.flag}</span>
+          <span class="region">${esc(t.region)}</span>
+          <span class="cat-badge cat-${t.cat}">${t.cat}</span>
+        </div>
+        <div class="title">${esc(t.title)}</div>
+      </div>
+    </div>`).join("");
+
+  // 카테고리별
+  document.getElementById("globalCats").innerHTML=GLOBAL_CATS.map((sec,si)=>`
+    <div class="cat-section">
+      <div class="cat-header" id="ch${si}" onclick="toggleCat(${si})">
+        <span class="cat-badge cat-${sec.cat}">${sec.cat}</span>
+        <span class="cat-title">${sec.cat} 동향</span>
+        <span class="toggle">▼</span>
+      </div>
+      <div class="cat-body" id="cb${si}">
+        ${sec.items.map(n=>`
+        <div class="g-card bar-${n.cat}">
+          <div class="g-meta">
+            <span>${n.flag}</span>
+            <span style="font-size:11px;font-weight:700;color:var(--sub)">${esc(n.region)}</span>
+            <span class="tier tier-${n.tier}">${TIER_LABEL[n.tier]}</span>
+            <span class="g-source">${esc(n.source)}</span>
+          </div>
+          <h4>${esc(n.title)}</h4>
+          <p class="g-body">${esc(n.body)}</p>
+        </div>`).join("")}
+      </div>
+    </div>`).join("");
+}
+
+function toggleCat(i){
+  const h=document.getElementById("ch"+i);
+  const b=document.getElementById("cb"+i);
+  h.classList.toggle("open");
+  b.classList.toggle("open");
+}
+
+/* 메인 탭 전환 */
+function switchMain(idx){
+  document.querySelectorAll(".main-tab").forEach((t,i)=>t.classList.toggle("active",i===idx));
+  document.querySelectorAll(".panel").forEach((p,i)=>p.classList.toggle("visible",i===idx));
+}
+
+/* 초기 렌더 */
+
+/* ════════════════════════════════
+   게임 데이터 — 2026.06.13
+════════════════════════════════ */
+const TODAY_KEY = '2026-06-13';
+
+const PREDICTION = {
+  question: "이번 주 6월 18일, BOE MPC는 어떤 결정을 내릴까요?",
+  options: ["동결 (3.75% 유지)", "25bp 인상 (4.00%)", "25bp 인하 (3.50%)"],
+  baseVotes: [186, 74, 29],   // 시뮬레이션 기반 커뮤니티 사전 응답
+  totalParticipants: 289,
+  yesterday: {
+    question: "이번 주 WTI 원유, 배럴당 마감 수준은?",
+    options: ["$85 미만", "$85~$95", "$95 이상"],
+    votes: [31, 158, 84],
+    correctIdx: 1,
+    resultLabel: "실제: $87.4/배럴"
+  }
+};
+
+const QUIZ = {
+  question: "오늘 브리핑에서 언급된 인도·베트남 중앙은행 디지털 결제 MoU 체결일은?",
+  options: [
+    "2026년 3월 15일",
+    "2026년 5월 5일",
+    "2026년 4월 29일",
+    "2026년 6월 1일"
+  ],
+  correctIdx: 1,
+  explanation: "RBI(인도중앙은행)와 SBV(베트남중앙은행)는 2026년 5월 5일 인도 내각 승인 하에 디지털 결제·금융혁신 협력 MoU를 체결했습니다. QR코드 기반 국경간 결제 연동과 핀테크 공동 혁신 프로그램이 핵심 내용입니다."
+};
+
+
+/* ── 상단 훅 바 렌더 ── */
+function renderHookBar() {
+  const y = PREDICTION.yesterday;
+  const total = y.votes.reduce((a,b) => a+b, 0);
+  const predictStored = localStorage.getItem('kb_predict_' + getPrevKey());
+  const quizStored = localStorage.getItem('kb_quiz_' + TODAY_KEY);
+  const quizStreak = parseInt(localStorage.getItem('kb_quiz_streak') || '0');
+
+  // 어제 예측 결과 텍스트
+  let predictText = '참여 결과 확인 →';
+  let predictClass = '';
+  if (predictStored !== null) {
+    const myIdx = parseInt(predictStored);
+    const isCorrect = myIdx === y.correctIdx;
+    predictText = isCorrect
+      ? '✅ 어제 정답! ' + y.options[y.correctIdx].split(' ')[0]
+      : '❌ 오답 — 정답: ' + y.options[y.correctIdx].split(' ')[0];
+    predictClass = isCorrect ? 'hook-correct' : 'hook-wrong';
+  }
+
+  // 퀴즈 상태 텍스트
+  let quizText = quizStreak > 0 ? '🔥 ' + quizStreak + '일 연속 정답 중' : '아직 미참여 — 도전하기';
+
+  document.getElementById('hookBar').innerHTML = `
+    <a class="hook-cell" href="#game-anchor" onclick="smoothToGame()">
+      <span class="hk-icon">🎯</span>
+      <span class="hk-text">
+        <span class="hk-title">어제의 예측</span>
+        <span class="hk-val ${predictClass}">${predictText}</span>
+      </span>
+      <span class="hk-arrow">↓</span>
+    </a>
+    <a class="hook-cell" href="#game-anchor" onclick="smoothToGame()">
+      <span class="hk-icon">🧠</span>
+      <span class="hk-text">
+        <span class="hk-title">오늘의 퀴즈</span>
+        <span class="hk-val">${quizText}</span>
+      </span>
+      <span class="hk-arrow">↓</span>
+    </a>`;
+}
+
+function smoothToGame() {
+  setTimeout(() => {
+    const el = document.getElementById('gameAnchor');
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 50);
+}
+
+/* ── 어제 예측 결과 렌더 ── */
+function renderYesterday() {
+  const y = PREDICTION.yesterday;
+  const total = y.votes.reduce((a,b) => a+b, 0);
+  const stored = localStorage.getItem('kb_predict_' + getPrevKey());
+  const myIdx = stored !== null ? parseInt(stored) : null;
+
+  let barsHTML = y.options.map((opt, i) => {
+    const pct = Math.round((y.votes[i] / total) * 100);
+    const isCorrect = i === y.correctIdx;
+    const isMe = myIdx === i;
+    return `
+      <div class="ybar-row">
+        <span class="ybar-label">${opt}</span>
+        <div class="ybar-track">
+          <div class="ybar-fill${isCorrect?' correct':''}" style="width:${pct}%"></div>
+        </div>
+        <span class="ybar-pct">${pct}%</span>
+        <span class="ybar-tick">${isCorrect ? '✅' : isMe ? '❌' : ''}</span>
+      </div>`;
+  }).join('');
+
+  document.getElementById('yesterdayBox').innerHTML = `
+    <div class="ybox-head">
+      <span class="ybox-q">${y.question}</span>
+      <span class="ybox-result">${y.resultLabel}</span>
+    </div>
+    ${barsHTML}`;
+}
+
+/* ── 오늘의 예측 렌더 ── */
+function renderPredict() {
+  const stored = localStorage.getItem('kb_predict_' + TODAY_KEY);
+  const voted = stored !== null;
+  const myIdx = voted ? parseInt(stored) : null;
+  const streak = parseInt(localStorage.getItem('kb_predict_streak') || '0');
+
+  if (!voted) {
+    // 투표 전
+    const optsHTML = PREDICTION.options.map((opt, i) =>
+      `<button class="predict-btn" onclick="castVote(${i})">
+        <span class="opt-num">${['①','②','③'][i]}</span>${opt}
+      </button>`
+    ).join('');
+    document.getElementById('predictBox').innerHTML = `
+      <div class="predict-label">🎯 오늘의 예측</div>
+      <div class="predict-q">${PREDICTION.question}</div>
+      <div class="predict-opts">${optsHTML}</div>
+      <div class="predict-meta">전체 참여 ${PREDICTION.totalParticipants.toLocaleString()}명 · 탭하여 예측 참여</div>`;
+  } else {
+    // 투표 후 — 결과 바 표시
+    const votes = [...PREDICTION.baseVotes];
+    votes[myIdx] += 1;
+    const total = votes.reduce((a,b) => a+b, 0);
+    const barsHTML = PREDICTION.options.map((opt, i) => {
+      const pct = Math.round((votes[i] / total) * 100);
+      const isMe = i === myIdx;
+      return `
+        <div class="result-row">
+          <span class="result-label">${opt.split(' ')[0]}</span>
+          <div class="result-track">
+            <div class="result-fill${isMe?' my-pick':''}" style="width:${pct}%"></div>
+          </div>
+          <span class="result-pct">${pct}%</span>
+          ${isMe ? '<span class="result-me">내 예측</span>' : ''}
+        </div>`;
+    }).join('');
+    document.getElementById('predictBox').innerHTML = `
+      <div class="predict-label">🎯 오늘의 예측 — 참여 완료</div>
+      <div class="predict-q">${PREDICTION.question}</div>
+      <div class="result-opts">${barsHTML}</div>
+      <div class="predict-done">
+        <span>전체 ${(total).toLocaleString()}명 참여</span>
+        ${streak > 0 ? `<span class="streak-badge">🔥 ${streak}일 연속 정답</span>` : ''}
+      </div>`;
+  }
+}
+
+function castVote(idx) {
+  localStorage.setItem('kb_predict_' + TODAY_KEY, idx);
+  PREDICTION.totalParticipants += 1;
+  renderPredict();
+}
+
+/* ── 퀴즈 렌더 ── */
+function renderQuiz() {
+  const stored = localStorage.getItem('kb_quiz_' + TODAY_KEY);
+  const answered = stored !== null;
+  const myAns = answered ? parseInt(stored) : null;
+  const streak = parseInt(localStorage.getItem('kb_quiz_streak') || '0');
+
+  const optsHTML = QUIZ.options.map((opt, i) => {
+    let cls = '';
+    if (answered) {
+      if (i === QUIZ.correctIdx) cls = ' reveal-correct';
+      else if (i === myAns) cls = ' wrong';
+      else cls = '';
+    }
+    return `<button class="quiz-btn${cls}" ${answered?'disabled':''} onclick="answerQuiz(${i})">
+      <span class="q-num">${['①','②','③','④'][i]}</span>${opt}
+    </button>`;
+  }).join('');
+
+  const isCorrect = answered && myAns === QUIZ.correctIdx;
+  const streakDisplay = streak > 0
+    ? `<span class="quiz-streak">🔥 ${streak}일 연속</span>`
+    : `<span class="quiz-streak" style="background:#E6E3DD;color:var(--charcoal)">오늘 첫 도전</span>`;
+
+  document.getElementById('quizBox').innerHTML = `
+    <div class="quiz-header">
+      <span class="quiz-icon">🧠</span>
+      <span class="quiz-title">오늘의 1분 퀴즈 · 제${130}호</span>
+      ${streakDisplay}
+    </div>
+    <div class="quiz-body">
+      <div class="quiz-q">${QUIZ.question}</div>
+      <div class="quiz-opts">${optsHTML}</div>
+      ${answered ? `
+        <div class="quiz-answered ${isCorrect?'ok':'no'}">
+          ${isCorrect ? '✅ 정답입니다!' : '❌ 오답 — 정답은 ' + (QUIZ.correctIdx+1) + '번'}
+        </div>
+        <div class="quiz-explanation"><strong>해설</strong> · ${QUIZ.explanation}</div>
+      ` : `<div style="margin-top:8px;font-size:11px;color:var(--sub);text-align:center">오늘 브리핑에서 답을 찾아보세요 👆</div>`}
+    </div>`;
+}
+
+function answerQuiz(idx) {
+  const prev = localStorage.getItem('kb_quiz_' + TODAY_KEY);
+  if (prev !== null) return;
+  localStorage.setItem('kb_quiz_' + TODAY_KEY, idx);
+  // streak update
+  const prevKey = getPrevKey();
+  const prevCorrect = localStorage.getItem('kb_quiz_correct_' + prevKey);
+  let streak = parseInt(localStorage.getItem('kb_quiz_streak') || '0');
+  const isCorrect = idx === QUIZ.correctIdx;
+  if (isCorrect) {
+    streak = (prevCorrect === '1') ? streak + 1 : 1;
+  } else {
+    streak = 0;
+  }
+  localStorage.setItem('kb_quiz_streak', streak);
+  localStorage.setItem('kb_quiz_correct_' + TODAY_KEY, isCorrect ? '1' : '0');
+  renderQuiz();
+}
+
+function getPrevKey() {
+  const d = new Date('2026-06-13');
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().split('T')[0];
+}
+
+
+renderBranch();
+renderSub();
+renderGlobal();
+renderYesterday();
+renderPredict();
+renderQuiz();
+renderHookBar();
+</script>
+</body>
+</html>
+
 </body>
 </html>
