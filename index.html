@@ -277,6 +277,30 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
 .footer-slogan span{font-size:9.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--navy);opacity:.35;}
 
 /* ━━━ 언어 전환 / 원문 링크 ━━━ */
+
+/* ━━━ GLOBAL CONNECTION ━━━ */
+.network-section{padding:22px 20px 6px;border-top:2px solid var(--line);margin-top:18px;}
+.network-title{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.network-rule{flex:1;height:1px;background:var(--line);}
+.network-label{font-size:11px;font-weight:900;color:var(--charcoal);letter-spacing:.08em;white-space:nowrap;}
+.network-grid{display:flex;flex-direction:column;gap:10px;}
+.network-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px;box-shadow:0 1px 6px rgba(26,24,22,.05);}
+.network-card.featured{border-left:4px solid var(--gold);}
+.network-kicker{font-size:10px;font-weight:900;letter-spacing:.09em;color:var(--sub);margin-bottom:8px;}
+.network-market{display:flex;align-items:center;gap:6px;margin-bottom:7px;}
+.network-market-name{font-size:12px;font-weight:800;color:var(--charcoal);}
+.network-headline{font-size:15px;font-weight:900;line-height:1.42;color:var(--ink);margin-bottom:7px;}
+.network-copy{font-size:12.5px;line-height:1.63;color:#44413B;}
+.network-bridge{margin-top:11px;padding:10px 11px;background:#FFF8E5;border:1px solid #F2E2AE;border-radius:6px;font-size:12.5px;line-height:1.58;color:#6B5500;}
+.network-bridge strong{font-weight:900;}
+.network-pulse{background:var(--navy);border-radius:10px;padding:16px;}
+.network-pulse .network-kicker{color:var(--gold);opacity:.92;}
+.network-pulse-title{font-size:14px;font-weight:900;line-height:1.48;color:#fff;margin-bottom:12px;}
+.network-opts{display:flex;flex-direction:column;gap:7px;}
+.network-btn{width:100%;padding:11px 13px;border-radius:7px;border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-size:13px;font-weight:700;cursor:pointer;text-align:left;font-family:inherit;transition:all .15s;}
+.network-btn:hover:not(:disabled){background:rgba(255,255,255,.14);border-color:var(--gold);}
+.network-btn:disabled{cursor:default;}.network-btn.selected{background:rgba(255,188,0,.18);border-color:var(--gold);}
+.network-note{margin-top:10px;font-size:11px;color:rgba(255,255,255,.62);line-height:1.5;}
 .lang-switch{
   border:1px solid rgba(255,188,0,.45); background:transparent; color:var(--gold);
   border-radius:14px; padding:4px 8px; font-size:10px; line-height:1; font-weight:900;
@@ -466,17 +490,17 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
   <div id="globalCats"></div>
 </div>
 
-<!-- ━━━━━━━━━━━━━━━━ 9. 게임존 ━━━━━━━━━━━━━━━━ -->
-<section class="game-zone-full" id="gameAnchor">
-  <div class="game-zone-title">
-    <span class="gz-line"></span>
-    <span class="gz-label" id="gameTitle">오늘의 참여 코너</span>
-    <span class="gz-line"></span>
+<!-- ━━━━━━━━━━━━━━━━ 9. GLOBAL CONNECTION ━━━━━━━━━━━━━━━━ -->
+<section class="network-section" id="networkAnchor">
+  <div class="network-title">
+    <span class="network-rule"></span>
+    <span class="network-label" id="networkTitle">KB GLOBAL CONNECTION</span>
+    <span class="network-rule"></span>
   </div>
-  <div class="gz-section-label" id="yesterdayLabel">📊 어제의 예측 결과</div>
-  <div class="yesterday-box" id="yesterdayBox"></div>
-  <div class="predict-box" id="predictBox"></div>
-  <div class="quiz-box" id="quizBox"></div>
+  <div class="network-grid">
+    <div class="network-card featured" id="oneMarketInsight"></div>
+    <div class="network-pulse" id="networkPulse"></div>
+  </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━ 10. FOOTER ━━━━━━━━━━━━━━━━ -->
@@ -515,17 +539,17 @@ const TIER_LABEL = {
 const UI = {
   ko: {
     title:"KB 글로벌 데일리 브리핑", issue:"제 131호", date:"2026.06.20 토",
-    mastTitle:"글로벌 데일리<br>브리핑", mastSub:"전 세계 12개 거점 · KB금융그룹 글로벌",
-    pulseTitle:"📡 오늘의 글로벌 온도", pulseBadge:"2026.06.20 기준",
-    summaryLabel:"EXECUTIVE SUMMARY · 2026.06.20",
+    mastTitle:"글로벌 데일리<br>브리핑", mastSub:"전 세계 12개 거점 · 하나의 KB 글로벌 금융 네트워크",
+    pulseTitle:"📡 오늘의 글로벌 관심 이슈", pulseBadge:"2026.06.20 기준",
+    summaryLabel:"GLOBAL CONNECT · 2026.06.20",
     summary:[
-      ["경제","미 연준·영란은행은 동결했지만, BOJ는 1.00%로 인상 — 주요국 통화정책의 ‘긴축 편향’이 선명해졌습니다."],
-      ["금융","연준의 연내 인상 시그널과 영란은행의 7대2 표결은 달러·파운드 조달비용의 상방 리스크를 유지합니다."],
-      ["디지털","중국의 위안화 국제화, 싱가포르의 금 현물 청산·보관 인프라 확장은 아시아 자금·결제 허브 경쟁을 높입니다."],
-      ["금융사고","인도 RBI가 금융상품 오판매와 ‘다크 패턴’을 금지하는 등 디지털 채널 소비자보호·통제 기대수준이 강화되고 있습니다."]
+      ["경제","BOJ 인상과 Fed·BOE 동결은 동경·뉴욕·런던의 통화정책 변화가 하나의 글로벌 자금흐름으로 연결되고 있음을 보여줍니다."],
+      ["금융","달러·파운드·엔화의 금리 환경은 각 거점의 현지 시장을 넘어, 아시아와 국제 금융허브 간 조달 여건을 함께 형성합니다."],
+      ["디지털","중국의 위안화 국제화와 싱가포르의 금 현물 인프라 확대는 아시아 금융허브들이 경쟁과 연결을 동시에 강화하는 흐름입니다."],
+      ["금융사고","인도의 소비자보호 규제 변화는 모든 거점이 디지털 채널에서 고객 신뢰를 어떻게 지켜갈지 함께 생각하게 하는 사례입니다."]
     ],
-    big:{eyebrow:"이 주의 숫자",number:"1.00%",unit:"BOJ 정책금리",desc:"일본은행, 6월 16일 25bp 인상",context:"BOJ의 31년 만의 최고 정책금리 진입은 아시아권 조달금리와 엔화 헤지 비용의 재점검 필요성을 높입니다."},
-    top3Label:"TODAY'S TOP 3",
+    big:{eyebrow:"이 주의 숫자",number:"1.00%",unit:"BOJ 정책금리",desc:"일본은행, 6월 16일 25bp 인상",context:"동경의 금리 정상화는 홍콩·싱가포르를 포함한 아시아 금융허브의 자금흐름을 함께 바라보게 하는 기준점이 됩니다."},
+    top3Label:"TODAY'S GLOBAL CONNECTORS",
     top:[
       {cat:"경제",country:"🇯🇵 동경 · Bank of Japan",title:"일본은행, 정책금리 1.00%로 인상 — 31년 만의 최고 수준",lead:"6월 16일 7대1로 25bp 인상. 에너지발 물가와 엔화 약세가 통화정책 정상화의 핵심 변수로 부상."},
       {cat:"경제",country:"🇺🇸 뉴욕 · Federal Reserve",title:"연준 동결, 연내 인상 가능성 시사 — 달러·미 국채금리 상승",lead:"6월 FOMC는 금리를 유지했지만, 물가 불확실성과 정책기대 변화가 자금조달·환리스크를 재점검하게 합니다."},
@@ -533,29 +557,29 @@ const UI = {
     ],
     timebar:"실시간 거점 현황",
     tabs:["<span class='tab-icon'>🌏</span>진출국가","<span class='tab-icon'>🏦</span>국외연결<br>자회사","<span class='tab-icon'>📡</span>글로벌<br>동향"],
-    globalTop:"🌐 오늘의 글로벌 TOP 5", globalCats:"카테고리별 동향",
-    gameTitle:"오늘의 참여 코너", yesterdayLabel:"📊 어제의 예측 결과",
-    footer:"본 브리핑은 2026년 6월 20일 기준 각국 중앙은행·금융당국 및 주요 언론의 공개자료를 요약한 내부 모니터링용 자료입니다. 원문보기는 해당 공개자료 또는 기사로 연결됩니다. 수치와 해석은 투자 판단의 근거로 사용할 수 없습니다.",
-    link:"원문 보기 →", implication:"시사점", source:"출처",
+    globalTop:"🌐 전 거점이 함께 보는 글로벌 TOP 5", globalCats:"거점 간 연결 동향",
+    networkTitle:"KB GLOBAL CONNECTION", oneMarket:"ONE MARKET, ONE INSIGHT", networkPulse:"OUR NETWORK PULSE",
+    footer:"본 브리핑은 2026년 6월 20일 기준 각국 중앙은행·금융당국 및 주요 언론의 공개자료를 바탕으로, KB 글로벌 네트워크가 같은 시장 흐름을 함께 읽을 수 있도록 구성한 데일리 뉴스입니다. 원문보기는 해당 공개자료 또는 기사로 연결됩니다.",
+    link:"원문 보기 →", implication:"Across KB Global", source:"출처",
     globalTopPrefix:"오늘의 글로벌 TOP 5", categoryTrend:"동향", noImplication:"",
     pulse:[
-      ["경제","높음",88,"경제"],["금융","높음",72,"금융"],["디지털","상승",62,"디지털"],
-      ["금융사고","주의",58,"금융사고"],["ESG","보통",36,"ESG"]
+      ["경제","주목",88,"경제"],["금융","주목",72,"금융"],["디지털","관찰",62,"디지털"],
+      ["금융사고","레이더",58,"금융사고"],["ESG","관찰",36,"ESG"]
     ]
   },
   en: {
     title:"KB Global Daily Briefing", issue:"No. 131", date:"Sat, 20 Jun 2026",
-    mastTitle:"Global Daily<br>Briefing", mastSub:"12 global locations · KB Financial Group Global",
-    pulseTitle:"📡 Global Risk Pulse", pulseBadge:"As of 20 Jun 2026",
-    summaryLabel:"EXECUTIVE SUMMARY · 20 JUN 2026",
+    mastTitle:"Global Daily<br>Briefing", mastSub:"12 global locations · one connected KB global financial network",
+    pulseTitle:"📡 Today’s Global Pulse", pulseBadge:"As of 20 Jun 2026",
+    summaryLabel:"GLOBAL CONNECT · 20 JUN 2026",
     summary:[
-      ["경제","The Fed and the Bank of England held, while the BOJ raised to 1.00% — the global monetary-policy tilt is now clearly restrictive."],
-      ["금융","The Fed’s year-end hike signal and the BoE’s 7–2 vote preserve upside risk to USD and GBP funding costs."],
-      ["디지털","China’s RMB internationalisation push and Singapore’s physical-gold clearing and vaulting plans intensify competition among Asian capital and payments hubs."],
-      ["금융사고","India’s RBI ban on financial-product mis-selling and digital ‘dark patterns’ lifts consumer-protection and channel-control expectations."]
+      ["경제","The BOJ hike and Fed–BoE holds show how policy moves in Tokyo, New York and London are converging into one global funding narrative."],
+      ["금융","USD, GBP and JPY conditions shape not only local markets but also the shared funding environment across Asian and international financial hubs."],
+      ["디지털","China’s RMB push and Singapore’s physical-gold infrastructure show Asian financial hubs becoming more connected while competing for market relevance."],
+      ["금융사고","India’s consumer-protection shift is a useful shared reference for how every location can sustain trust in digital channels."]
     ],
-    big:{eyebrow:"NUMBER OF THE WEEK",number:"1.00%",unit:"BOJ policy rate",desc:"Bank of Japan: 25bp increase on 16 June",context:"Japan’s highest policy rate in 31 years requires a renewed review of Asian funding rates and yen hedging costs."},
-    top3Label:"TODAY'S TOP 3",
+    big:{eyebrow:"NUMBER OF THE WEEK",number:"1.00%",unit:"BOJ policy rate",desc:"Bank of Japan: 25bp increase on 16 June",context:"Tokyo’s policy normalisation is a shared reference point for funding conditions and capital flows across Asian financial hubs."},
+    top3Label:"TODAY'S GLOBAL CONNECTORS",
     top:[
       {cat:"경제",country:"🇯🇵 Tokyo · Bank of Japan",title:"BOJ raises policy rate to 1.00% — the highest in 31 years",lead:"A 7–1 decision on 16 June lifted the rate by 25bp. Energy-driven inflation and a weak yen remain key normalisation variables."},
       {cat:"경제",country:"🇺🇸 New York · Federal Reserve",title:"Fed holds, signals possibility of a 2026 hike — dollar and Treasury yields rise",lead:"June FOMC kept rates unchanged, but inflation uncertainty and shifting policy expectations warrant a renewed review of funding and FX risk."},
@@ -563,14 +587,14 @@ const UI = {
     ],
     timebar:"LIVE LOCATION CLOCK", 
     tabs:["<span class='tab-icon'>🌏</span>Branches","<span class='tab-icon'>🏦</span>Overseas<br>Subsidiaries","<span class='tab-icon'>📡</span>Global<br>Trends"],
-    globalTop:"🌐 GLOBAL TOP 5", globalCats:"TRENDS BY CATEGORY",
-    gameTitle:"DAILY ENGAGEMENT", yesterdayLabel:"📊 YESTERDAY'S PREDICTION RESULT",
-    footer:"This internal-monitoring briefing summarizes publicly available material from central banks, financial authorities and major media as of 20 June 2026. ‘View source’ opens the underlying public release or article. Figures and interpretations must not be used as an investment basis.",
-    link:"View source →", implication:"KB implication", source:"Source",
+    globalTop:"🌐 GLOBAL TOP 5 ACROSS OUR MARKETS", globalCats:"CONNECTED TRENDS BY CATEGORY",
+    networkTitle:"KB GLOBAL CONNECTION", oneMarket:"ONE MARKET, ONE INSIGHT", networkPulse:"OUR NETWORK PULSE",
+    footer:"This daily briefing brings together publicly available material from central banks, financial authorities and major media as of 20 June 2026, helping the KB global network read the same market movements together. ‘View source’ opens the underlying public release or article.",
+    link:"View source →", implication:"Across KB Global", source:"Source",
     globalTopPrefix:"GLOBAL TOP 5", categoryTrend:"trend", noImplication:"",
     pulse:[
-      ["경제","High",88,"경제"],["금융","High",72,"금융"],["디지털","Elevated",62,"디지털"],
-      ["금융사고","Watch",58,"금융사고"],["ESG","Moderate",36,"ESG"]
+      ["경제","Hot",88,"경제"],["금융","Hot",72,"금융"],["디지털","On radar",62,"디지털"],
+      ["금융사고","Watch",58,"금융사고"],["ESG","On radar",36,"ESG"]
     ]
   }
 };
@@ -629,7 +653,7 @@ const SRC = {
   nbc:"https://www.nbc.gov.kh/english/",
   cambodiaAMI:"https://www.dfdl.com/insights/legal-and-tax-updates/cambodia-nbc-issues-prakas-on-conditions-for-asset-management-institutions/"
 };
-const I = (label,value,delta,dir=0) => ({label:L(label[0],label[1]),value:Array.isArray(value)?L(value[0],value[1]):value,delta:L(delta[0],delta[1]),dir});
+const I = (label,value,delta,dir=0) => ({label:L(label[0],label[1]),value,delta:L(delta[0],delta[1]),dir});
 const N = (cat,tier,source,url,title,body,implication=null) => ({cat,tier,source,url,title:L(title[0],title[1]),body:L(body[0],body[1]),implication:implication?L(implication[0],implication[1]):null});
 
 const BRANCHES = [
@@ -718,7 +742,7 @@ const BRANCHES = [
       ["기업뱅킹·가상계좌 등 디지털 서비스 확장 시 결제 유동성·정산 리스크도 함께 관리.","Manage payment liquidity and settlement risk alongside digital expansion in corporate banking and virtual accounts."])
    ]},
   {name:L("인도","India"),flag:"🇮🇳",type:L("지점","Branch"),
-   indicators:[I(["레포금리","Repo rate"],"5.25%",["유지","Held"],0),I(["정책기조","Policy stance"],["중립","Neutral"],["유지","Maintained"],0),I(["소비자보호","Conduct rule"],"다크 패턴 금지",["2027.01 시행","Effective Jan 2027"],1)],
+   indicators:[I(["레포금리","Repo rate"],"5.25%",["유지","Held"],0),I(["정책기조","Policy stance"],"중립",["중립","Neutral"],0),I(["소비자보호","Conduct rule"],"다크 패턴 금지",["2027.01 시행","Effective Jan 2027"],1)],
    news:[
     N("경제",1,"Reuters · 1 Jun",SRC.indiaRate,
       ["RBI, 유가·루피 변동성 속 레포금리 5.25% 유지","RBI holds repo rate at 5.25% amid oil and rupee volatility"],
@@ -730,7 +754,7 @@ const BRANCHES = [
       ["스타뱅킹·기업뱅킹의 상품·마케팅 화면에 동의·설명·철회 체계를 선제 반영.","Build explicit consent, disclosure and opt-out controls into retail and corporate digital-banking product journeys."])
    ]},
   {name:L("미얀마","Myanmar"),flag:"🇲🇲",type:L("법인","Bank subsidiary"),
-   indicators:[I(["성장전망(FY26/27)","FY26/27 growth"],"2.0%",["하향","Downgraded"],-1),I(["핵심 압력","Key pressure"],["연료·외화","Fuel / FX"],["압력 확대","Intensifying"],1),I(["환율 데이터","FX reference"],"CBM",["일일 확인","Daily check"],0)],
+   indicators:[I(["성장전망(FY26/27)","FY26/27 growth"],"2.0%",["하향","Downgraded"],-1),I(["핵심 압력","Key pressure"],"연료·외화",["연료·외화","Fuel / FX"],1),I(["환율 데이터","FX reference"],"CBM",["일일 확인","Daily check"],0)],
    news:[
     N("경제",0,"World Bank · 16 Jun",SRC.myanmarWB,
       ["세계은행, 미얀마 성장전망 2.0%로 하향 — 연료 충격이 외화·물가 압박 심화","World Bank cuts Myanmar growth outlook to 2.0% as fuel shock deepens pressure"],
@@ -742,7 +766,7 @@ const BRANCHES = [
       ["외환거래·송금 업무는 당일 환율, 한도, 증빙 요건을 함께 재확인.","For FX and remittance transactions, recheck same-day rates, limits and documentary requirements."])
    ]},
   {name:L("오클랜드","Auckland"),flag:"🇳🇿",type:L("지점","Branch"),
-   indicators:[I(["OCR(RBNZ)","OCR (RBNZ)"],"2.25%",["동결","Held"],0),I(["향후 기조","Forward bias"],"인상 가능성",["물가 대응","Inflation response"],1),I(["고용 여건","Labour market"],["약세","Weak"],["하방 위험","Downside risk"],-1)],
+   indicators:[I(["OCR(RBNZ)","OCR (RBNZ)"],"2.25%",["동결","Held"],0),I(["향후 기조","Forward bias"],"인상 가능성",["물가 대응","Inflation response"],1),I(["고용 여건","Labour market"],"약세",["약세","Weak"],-1)],
    news:[
     N("경제",0,"RBNZ · 27 May",SRC.rbnz,
       ["RBNZ, OCR 2.25% 동결 — 에너지 충격의 물가 영향 점검","RBNZ holds OCR at 2.25% while assessing energy-shock inflation"],
@@ -850,9 +874,55 @@ function safeUrl(url){ try { const u=new URL(url); return (u.protocol==="https:"
 function catName(cat){ return tx(CATEGORY[cat]) || cat; }
 function indHTML(inds){
   return inds.map(x=>{const cls=x.dir>0?"up":x.dir<0?"down":"flat";const arrow=x.dir>0?"▲":x.dir<0?"▼":"―";
-    return `<div class="indicator"><div class="lbl">${esc(tx(x.label))}</div><div class="val">${esc(tx(x.value))}</div><div class="delta ${cls}">${arrow} ${esc(tx(x.delta))}</div></div>`;}).join("");
+    return `<div class="indicator"><div class="lbl">${esc(tx(x.label))}</div><div class="val">${esc(x.value)}</div><div class="delta ${cls}">${arrow} ${esc(tx(x.delta))}</div></div>`;}).join("");
 }
-function newsHTML(news){
+function networkNote(n, location){
+  const name=tx(location.name);
+  const koNotes={
+    "런던":"런던의 물가·사모시장 변화는 뉴욕의 달러금리, 홍콩·싱가포르의 국제 자금흐름과 함께 읽을 때 더 선명해집니다.",
+    "뉴욕":"뉴욕의 달러·국채금리 움직임은 런던·홍콩·싱가포르를 포함한 전 거점의 국제 자금조달 환경을 이해하는 공통 기준입니다.",
+    "동경":"동경의 금리 정상화는 홍콩·싱가포르의 엔화 조달과 아시아 채권시장의 대화로 이어지는 대표적 연결 이슈입니다.",
+    "홍콩":"홍콩의 역외 RMB·자산관리 흐름은 중국의 정책 변화와 싱가포르의 금융허브 경쟁을 함께 보여주는 연결 고리입니다.",
+    "싱가포르":"싱가포르의 금·결제 인프라 확장은 홍콩·런던과의 국제 금융허브 경쟁, 그리고 아시아 수탁·자금시장 변화와 맞닿아 있습니다.",
+    "중국":"중국의 RMB 국제화와 금융안정 정책은 홍콩의 역외 RMB 시장, 주변국의 무역결제·자금흐름과 함께 보아야 하는 변화입니다.",
+    "베트남":"베트남의 신용·디지털금융 변화는 인도·인도네시아 등 성장시장 거점이 공유하는 금융확장과 리스크관리의 균형을 보여줍니다.",
+    "인도":"인도의 소비자보호와 디지털금융 규제는 베트남·인도네시아·캄보디아를 포함한 성장시장 채널운영 논의에 참고가 됩니다.",
+    "미얀마":"미얀마의 외환·연료 이슈는 신흥시장에서 환율, 유동성, 고객 접점이 얼마나 밀접하게 연결되는지 보여주는 사례입니다.",
+    "오클랜드":"오클랜드의 물가·고용 신호는 주요국의 긴축 경계가 아시아·태평양 금융시장까지 어떻게 이어지는지 보여줍니다.",
+    "인도네시아":"인도네시아의 자본흐름·국채금리 변화는 동남아 성장시장과 국제 금융허브 사이의 위험선호 흐름을 함께 읽게 합니다.",
+    "캄보디아":"캄보디아의 USD 유동성·자산관리 규제 변화는 동남아 금융시장의 달러화 환경과 건전성 관리 이슈를 연결합니다."
+  };
+  const enNotes={
+    "London":"London’s inflation and private-market themes become clearer when read alongside dollar rates in New York and cross-border flows through Hong Kong and Singapore.",
+    "New York":"New York’s USD and Treasury moves are a shared reference point for international funding conditions across London, Hong Kong, Singapore and the wider network.",
+    "Tokyo":"Tokyo’s policy normalisation is a defining connector between yen funding in Hong Kong and Singapore and the wider Asian bond-market conversation.",
+    "Hong Kong":"Hong Kong’s offshore RMB and wealth-management story connects policy shifts in China with financial-hub competition in Singapore.",
+    "Singapore":"Singapore’s gold and payments infrastructure expansion links to global-hub competition with Hong Kong and London, and to Asian custody and money-market trends.",
+    "China":"China’s RMB internationalisation and stability policies should be read together with Hong Kong’s offshore RMB market and regional trade-settlement flows.",
+    "Vietnam":"Vietnam’s credit and digital-finance changes mirror the balance between growth and risk management shared by other growth markets, including India and Indonesia.",
+    "India":"India’s digital-finance and consumer-protection rules offer useful reference points for channel design across Vietnam, Indonesia and Cambodia.",
+    "Myanmar":"Myanmar’s FX and fuel themes show how closely currency, liquidity and customer conditions can interact in emerging markets.",
+    "Auckland":"Auckland’s inflation and labour signals show how monetary-policy vigilance can extend across Asia-Pacific financial markets.",
+    "Indonesia":"Indonesia’s capital-flow and government-yield moves help connect risk appetite between Southeast Asian growth markets and international financial hubs.",
+    "Cambodia":"Cambodia’s USD liquidity and asset-management regulation connect dollarisation and asset-quality themes across Southeast Asian financial markets."
+  };
+  const fallbackKo={
+    "경제":`${name}의 통화정책·물가 변화는 다른 거점의 자금흐름과 환율 인식을 함께 읽는 기준이 됩니다.`,
+    "금융":`${name} 금융시장의 변화는 KB 글로벌 네트워크 내 조달·무역금융·자본시장 대화를 연결하는 참고점입니다.`,
+    "디지털":`${name}의 채널·인프라·규제 변화는 다른 거점의 디지털 금융 경험과 고객 신뢰 논의를 풍부하게 합니다.`,
+    "금융사고":`${name}의 고객보호·통제 이슈는 모든 거점이 함께 공유할 수 있는 디지털 신뢰의 기준점입니다.`,
+    "ESG":`${name}의 시장인프라·전환금융 변화는 다른 금융허브의 상품·수탁·리스크 논의에도 연결됩니다.`
+  };
+  const fallbackEn={
+    "경제":`Developments in ${name}'s monetary policy and inflation help every location read shared funding flows and FX sentiment.`,
+    "금융":`${name}'s market developments offer a common reference for funding, trade-finance and capital-market conversations across KB Global.`,
+    "디지털":`${name}'s channel, infrastructure and regulatory shifts enrich the network-wide conversation on digital finance and customer trust.`,
+    "금융사고":`${name}'s customer-protection and control themes are shared reference points for digital trust across every location.`,
+    "ESG":`${name}'s market-infrastructure and transition-finance changes connect to product, custody and risk discussions at other financial hubs.`
+  };
+  return lang==="ko" ? (koNotes[name]||fallbackKo[n.cat]||"") : (enNotes[name]||fallbackEn[n.cat]||"");
+}
+function newsHTML(news, location){
   return news.map(n=>`
     <article class="card bar-${n.cat}">
       <div class="meta">
@@ -862,7 +932,7 @@ function newsHTML(news){
       </div>
       <h3>${esc(tx(n.title))}</h3>
       <p class="body">${esc(tx(n.body))}</p>
-      ${n.implication?`<div class="implication"><strong>${esc(UI[lang].implication)}</strong> · ${esc(tx(n.implication))}</div>`:""}
+      <div class="implication"><strong>${esc(UI[lang].implication)}</strong> · ${esc(networkNote(n,location))}</div>
       <a class="src-link" href="${safeUrl(n.url)}" target="_blank" rel="noopener noreferrer">${esc(UI[lang].link)}</a>
     </article>`).join("");
 }
@@ -873,11 +943,11 @@ function headHTML(c){
 }
 function renderBranch(){
   document.getElementById("branchRow").innerHTML=BRANCHES.map((c,i)=>`<button class="chip${i===branchIdx?" active":""}" onclick="branchIdx=${i};renderBranch()">${c.flag} ${esc(tx(c.name))}</button>`).join("");
-  const c=BRANCHES[branchIdx]; document.getElementById("branchHead").innerHTML=headHTML(c); document.getElementById("branchInd").innerHTML=indHTML(c.indicators); document.getElementById("branchNews").innerHTML=newsHTML(c.news);
+  const c=BRANCHES[branchIdx]; document.getElementById("branchHead").innerHTML=headHTML(c); document.getElementById("branchInd").innerHTML=indHTML(c.indicators); document.getElementById("branchNews").innerHTML=newsHTML(c.news,c);
 }
 function renderSub(){
   document.getElementById("subRow").innerHTML=SUBS.map((c,i)=>`<button class="chip sub-chip${i===subIdx?" active":""}" onclick="subIdx=${i};renderSub()">${c.flag} ${esc(tx(c.name))}<br><span style="font-size:10px;font-weight:600;opacity:.75">${esc(tx(c.entity))}</span></button>`).join("");
-  const c=SUBS[subIdx]; document.getElementById("subHead").innerHTML=headHTML(c); document.getElementById("subInd").innerHTML=indHTML(c.indicators); document.getElementById("subNews").innerHTML=newsHTML(c.news);
+  const c=SUBS[subIdx]; document.getElementById("subHead").innerHTML=headHTML(c); document.getElementById("subInd").innerHTML=indHTML(c.indicators); document.getElementById("subNews").innerHTML=newsHTML(c.news,c);
 }
 function renderGlobal(){
   document.getElementById("globalTop5").innerHTML=GLOBAL_TOP5.map((t,i)=>`
@@ -892,46 +962,35 @@ function renderGlobal(){
 function toggleCat(i){document.getElementById("ch"+i).classList.toggle("open");document.getElementById("cb"+i).classList.toggle("open");}
 function switchMain(idx){document.querySelectorAll(".main-tab").forEach((t,i)=>t.classList.toggle("active",i===idx));document.querySelectorAll(".panel").forEach((p,i)=>p.classList.toggle("visible",i===idx));}
 
-/* ── 참여 코너: 2026.06.20 ── */
-const TODAY_KEY=REPORT_DATE;
-const PREDICTION={
-  question:L("올해 하반기, 주요 G10 중앙은행의 공통 기조는 어떻게 전개될까요?","Which direction will major G10 central banks take in H2 2026?"),
-  options:[L("인플레이션 경계·긴축 유지","Inflation vigilance / tighter bias"),L("현 수준 장기 동결","Hold at current levels"),L("경기둔화 대응 인하","Cuts to support growth")],
-  baseVotes:[174,93,48],totalParticipants:315,
-  yesterday:{question:L("6월 18일 BOE MPC의 기준금리 결정은?","What was the BoE MPC’s 18 June Bank Rate decision?"),options:[L("3.75% 동결","Hold at 3.75%"),L("4.00%로 25bp 인상","Raise 25bp to 4.00%"),L("3.50%로 25bp 인하","Cut 25bp to 3.50%")],votes:[194,79,29],correctIdx:0,resultLabel:L("실제: 3.75% 동결 (7–2)","Actual: held at 3.75% (7–2)")}
+/* ── KB Global Connection ── */
+const NETWORK_KEY=REPORT_DATE;
+const NETWORK = {
+  market:L("🇯🇵 동경","🇯🇵 Tokyo"),
+  title:L("BOJ의 금리 정상화는 아시아 금융허브의 공통 화두가 되었습니다.","BOJ normalisation has become a shared conversation across Asian financial hubs."),
+  body:L("동경의 1.00% 금리 인상은 일본만의 뉴스가 아닙니다. 엔화 조달·환율·채권시장에 대한 인식이 홍콩과 싱가포르를 포함한 아시아 금융시장의 대화로 이어지고 있습니다.","Tokyo's move to 1.00% is more than a Japan story. It is shaping a shared conversation on yen funding, FX and bond markets across Asian financial centres, including Hong Kong and Singapore."),
+  bridge:L("동경의 변화가 뉴욕·런던의 긴축 경계와 만나면서, 각 거점은 서로 다른 시장의 이야기를 하나의 글로벌 금융 흐름으로 읽게 됩니다.","When Tokyo's shift meets inflation vigilance in New York and London, locations can read different local stories as one connected global-finance narrative."),
+  question:L("이번 주, 가장 관심 있게 보고 있는 글로벌 금융 변화는 무엇인가요?","Which global-finance development is most on your radar this week?"),
+  options:[
+    L("주요국 통화정책과 자금조달 환경","Major-central-bank policy and funding conditions"),
+    L("아시아 금융허브의 결제·시장인프라 경쟁","Asian financial-hub competition in payments and market infrastructure"),
+    L("디지털 채널의 고객보호·규제 변화","Customer protection and regulatory change in digital channels")
+  ]
 };
-const QUIZ={
-  question:L("6월 16일 BOJ가 올린 정책금리 수준은?","To what level did the BOJ raise its policy rate on 16 June?"),
-  options:[L("0.75%","0.75%"),L("1.00%","1.00%"),L("1.25%","1.25%"),L("1.50%","1.50%")],correctIdx:1,
-  explanation:L("일본은행은 6월 16일 7대1 표결로 무담보 콜금리 유도목표를 약 1.00%로 높였습니다.","On 16 June, the BOJ voted 7–1 to guide the uncollateralized overnight call rate at around 1.00%.")
-};
+function smoothToNetwork(){setTimeout(()=>{const el=document.getElementById("networkAnchor");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});},50);}
 function renderHookBar(){
-  const y=PREDICTION.yesterday; const predictStored=localStorage.getItem("kb_predict_"+getPrevKey()); const quizStored=localStorage.getItem("kb_quiz_"+TODAY_KEY); const streak=parseInt(localStorage.getItem("kb_quiz_streak")||"0");
-  let predictText=lang==="ko"?"참여 결과 확인 →":"View result →", predictClass="";
-  if(predictStored!==null){const myIdx=parseInt(predictStored),correct=myIdx===y.correctIdx;predictText=correct?(lang==="ko"?"✅ 어제 정답!":"✅ Correct yesterday!"):(lang==="ko"?"❌ 오답 — 정답 확인":"❌ Incorrect — see answer");predictClass=correct?"hook-correct":"hook-wrong";}
-  const quizText=streak>0?(lang==="ko"?`🔥 ${streak}일 연속 정답 중`:`🔥 ${streak}-day correct streak`):(quizStored!==null?(lang==="ko"?"참여 완료":"Completed"):(lang==="ko"?"아직 미참여 — 도전하기":"Not answered — try now"));
-  document.getElementById("hookBar").innerHTML=`<a class="hook-cell" href="#gameAnchor" onclick="smoothToGame()"><span class="hk-icon">🎯</span><span class="hk-text"><span class="hk-title">${lang==="ko"?"어제의 예측":"YESTERDAY'S PREDICTION"}</span><span class="hk-val ${predictClass}">${predictText}</span></span><span class="hk-arrow">↓</span></a><a class="hook-cell" href="#gameAnchor" onclick="smoothToGame()"><span class="hk-icon">🧠</span><span class="hk-text"><span class="hk-title">${lang==="ko"?"오늘의 퀴즈":"TODAY'S QUIZ"}</span><span class="hk-val">${quizText}</span></span><span class="hk-arrow">↓</span></a>`;
+  const selected=localStorage.getItem("kb_network_pulse_"+NETWORK_KEY);
+  const status=selected===null ? (lang==="ko"?"이번 주 관심 주제 남기기 →":"Share your focus this week →") : (lang==="ko"?"내 관심 주제 저장됨":"Your focus is saved");
+  document.getElementById("hookBar").innerHTML=`<a class="hook-cell" href="#networkAnchor" onclick="smoothToNetwork()"><span class="hk-icon">🌐</span><span class="hk-text"><span class="hk-title">${lang==="ko"?"ONE MARKET, ONE INSIGHT":"ONE MARKET, ONE INSIGHT"}</span><span class="hk-val">${esc(tx(NETWORK.market))} · ${lang==="ko"?"아시아 자금흐름":"Asian funding flows"}</span></span><span class="hk-arrow">↓</span></a><a class="hook-cell" href="#networkAnchor" onclick="smoothToNetwork()"><span class="hk-icon">🔗</span><span class="hk-text"><span class="hk-title">${lang==="ko"?"OUR NETWORK PULSE":"OUR NETWORK PULSE"}</span><span class="hk-val">${status}</span></span><span class="hk-arrow">↓</span></a>`;
 }
-function smoothToGame(){setTimeout(()=>{const el=document.getElementById("gameAnchor");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});},50);}
-function renderYesterday(){
-  const y=PREDICTION.yesterday,total=y.votes.reduce((a,b)=>a+b,0),stored=localStorage.getItem("kb_predict_"+getPrevKey()),myIdx=stored!==null?parseInt(stored):null;
-  const bars=y.options.map((o,i)=>{const pct=Math.round(y.votes[i]/total*100),correct=i===y.correctIdx,me=myIdx===i;return `<div class="ybar-row"><span class="ybar-label">${esc(tx(o))}</span><div class="ybar-track"><div class="ybar-fill${correct?" correct":""}" style="width:${pct}%"></div></div><span class="ybar-pct">${pct}%</span><span class="ybar-tick">${correct?"✅":me?"❌":""}</span></div>`;}).join("");
-  document.getElementById("yesterdayBox").innerHTML=`<div class="ybox-head"><span class="ybox-q">${esc(tx(y.question))}</span><span class="ybox-result">${esc(tx(y.resultLabel))}</span></div>${bars}`;
+function renderNetwork(){
+  const selected=localStorage.getItem("kb_network_pulse_"+NETWORK_KEY);
+  document.getElementById("networkTitle").textContent=UI[lang].networkTitle;
+  document.getElementById("oneMarketInsight").innerHTML=`<div class="network-kicker">${UI[lang].oneMarket}</div><div class="network-market"><span>${esc(tx(NETWORK.market).split(" ")[0])}</span><span class="network-market-name">${esc(tx(NETWORK.market).replace(/^\S+\s*/,""))}</span></div><div class="network-headline">${esc(tx(NETWORK.title))}</div><div class="network-copy">${esc(tx(NETWORK.body))}</div><div class="network-bridge"><strong>Across KB Global</strong> · ${esc(tx(NETWORK.bridge))}</div>`;
+  const opts=NETWORK.options.map((o,i)=>`<button class="network-btn${selected===String(i)?" selected":""}" ${selected!==null?"disabled":""} onclick="saveNetworkPulse(${i})">${esc(tx(o))}</button>`).join("");
+  const note=selected===null ? (lang==="ko"?"선택 내용은 이 브라우저에만 저장됩니다. 전체 참여 수는 표시하지 않습니다.":"Your choice is saved only in this browser. No network-wide participation count is displayed.") : (lang==="ko"?"내 관심 주제가 저장되었습니다. 다른 거점의 이슈를 살펴보며 오늘의 글로벌 흐름을 이어가세요.":"Your focus has been saved. Explore other locations to continue today’s global conversation.");
+  document.getElementById("networkPulse").innerHTML=`<div class="network-kicker">${UI[lang].networkPulse}</div><div class="network-pulse-title">${esc(tx(NETWORK.question))}</div><div class="network-opts">${opts}</div><div class="network-note">${note}</div>`;
 }
-function renderPredict(){
-  const stored=localStorage.getItem("kb_predict_"+TODAY_KEY),voted=stored!==null,myIdx=voted?parseInt(stored):null,streak=parseInt(localStorage.getItem("kb_predict_streak")||"0");
-  if(!voted){const opts=PREDICTION.options.map((o,i)=>`<button class="predict-btn" onclick="castVote(${i})"><span class="opt-num">${["①","②","③"][i]}</span>${esc(tx(o))}</button>`).join("");document.getElementById("predictBox").innerHTML=`<div class="predict-label">🎯 ${lang==="ko"?"오늘의 예측":"TODAY'S PREDICTION"}</div><div class="predict-q">${esc(tx(PREDICTION.question))}</div><div class="predict-opts">${opts}</div><div class="predict-meta">${lang==="ko"?`전체 참여 ${PREDICTION.totalParticipants.toLocaleString()}명 · 탭하여 예측 참여`:`${PREDICTION.totalParticipants.toLocaleString()} participants · Tap to vote`}</div>`;}
-  else {const votes=[...PREDICTION.baseVotes];votes[myIdx]+=1;const total=votes.reduce((a,b)=>a+b,0);const bars=PREDICTION.options.map((o,i)=>{const pct=Math.round(votes[i]/total*100),me=i===myIdx;return `<div class="result-row"><span class="result-label">${esc(tx(o))}</span><div class="result-track"><div class="result-fill${me?" my-pick":""}" style="width:${pct}%"></div></div><span class="result-pct">${pct}%</span>${me?`<span class="result-me">${lang==="ko"?"내 예측":"My pick"}</span>`:""}</div>`;}).join("");document.getElementById("predictBox").innerHTML=`<div class="predict-label">🎯 ${lang==="ko"?"오늘의 예측 — 참여 완료":"TODAY'S PREDICTION — VOTED"}</div><div class="predict-q">${esc(tx(PREDICTION.question))}</div><div class="result-opts">${bars}</div><div class="predict-done"><span>${lang==="ko"?`전체 ${total.toLocaleString()}명 참여`:`${total.toLocaleString()} participants`}</span>${streak>0?`<span class="streak-badge">🔥 ${streak}${lang==="ko"?"일 연속 정답":" day streak"}</span>`:""}</div>`;}
-}
-function castVote(idx){localStorage.setItem("kb_predict_"+TODAY_KEY,idx);PREDICTION.totalParticipants+=1;renderPredict();}
-function renderQuiz(){
-  const stored=localStorage.getItem("kb_quiz_"+TODAY_KEY),answered=stored!==null,myAns=answered?parseInt(stored):null,streak=parseInt(localStorage.getItem("kb_quiz_streak")||"0");
-  const opts=QUIZ.options.map((o,i)=>{let cls="";if(answered){if(i===QUIZ.correctIdx)cls=" reveal-correct";else if(i===myAns)cls=" wrong";}return `<button class="quiz-btn${cls}" ${answered?"disabled":""} onclick="answerQuiz(${i})"><span class="q-num">${["①","②","③","④"][i]}</span>${esc(tx(o))}</button>`;}).join("");
-  const isCorrect=answered&&myAns===QUIZ.correctIdx;const streakDisplay=streak>0?`<span class="quiz-streak">🔥 ${streak}${lang==="ko"?"일 연속":" day streak"}</span>`:`<span class="quiz-streak" style="background:#E6E3DD;color:var(--charcoal)">${lang==="ko"?"오늘 첫 도전":"First try today"}</span>`;
-  document.getElementById("quizBox").innerHTML=`<div class="quiz-header"><span class="quiz-icon">🧠</span><span class="quiz-title">${lang==="ko"?`오늘의 1분 퀴즈 · 제${ISSUE_NO}호`:`ONE-MINUTE QUIZ · NO. ${ISSUE_NO}`}</span>${streakDisplay}</div><div class="quiz-body"><div class="quiz-q">${esc(tx(QUIZ.question))}</div><div class="quiz-opts">${opts}</div>${answered?`<div class="quiz-answered ${isCorrect?"ok":"no"}">${isCorrect?(lang==="ko"?"✅ 정답입니다!":"✅ Correct!"):(lang==="ko"?`❌ 오답 — 정답은 ${QUIZ.correctIdx+1}번`:`❌ Incorrect — answer: ${QUIZ.correctIdx+1}`)}</div><div class="quiz-explanation"><strong>${lang==="ko"?"해설":"Explanation"}</strong> · ${esc(tx(QUIZ.explanation))}</div>`:`<div style="margin-top:8px;font-size:11px;color:var(--sub);text-align:center">${lang==="ko"?"오늘 브리핑에서 답을 찾아보세요 👆":"Find the answer in today’s briefing 👆"}</div>`}</div>`;
-}
-function answerQuiz(idx){if(localStorage.getItem("kb_quiz_"+TODAY_KEY)!==null)return;localStorage.setItem("kb_quiz_"+TODAY_KEY,idx);const prevCorrect=localStorage.getItem("kb_quiz_correct_"+getPrevKey());let streak=parseInt(localStorage.getItem("kb_quiz_streak")||"0");const correct=idx===QUIZ.correctIdx;streak=correct?(prevCorrect==="1"?streak+1:1):0;localStorage.setItem("kb_quiz_streak",streak);localStorage.setItem("kb_quiz_correct_"+TODAY_KEY,correct?"1":"0");renderQuiz();renderHookBar();}
-function getPrevKey(){const d=new Date(REPORT_DATE+"T00:00:00");d.setDate(d.getDate()-1);return d.toISOString().split("T")[0];}
+function saveNetworkPulse(idx){localStorage.setItem("kb_network_pulse_"+NETWORK_KEY,String(idx));renderNetwork();renderHookBar();}
 
 function setTxt(id,value){const el=document.getElementById(id);if(el)el.textContent=value;}
 function setHTML(id,value){const el=document.getElementById(id);if(el)el.innerHTML=value;}
@@ -945,11 +1004,11 @@ function updateStatic(){
   u.summary.forEach((v,i)=>{setTxt(`summaryCat${i+1}`,catName(v[0]));setTxt(`summaryText${i+1}`,v[1]);});
   setTxt("bnEyebrow",u.big.eyebrow);setTxt("bnNumber",u.big.number);setTxt("bnUnit",u.big.unit);setTxt("bnDesc",u.big.desc);setTxt("bnContext",u.big.context);
   setTxt("top3Label",u.top3Label);u.top.forEach((x,i)=>{setTxt(`top${i+1}Cat`,catName(x.cat));setTxt(`top${i+1}Country`,x.country);setTxt(`top${i+1}Title`,x.title);if(i===0)setTxt("top1Lead",x.lead);});
-  setTxt("timebarLabel",u.timebar);u.tabs.forEach((v,i)=>setHTML(`tab${i}`,v));setTxt("globalTopTitle",u.globalTop);setTxt("globalCatTitle",u.globalCats);setTxt("gameTitle",u.gameTitle);setTxt("yesterdayLabel",u.yesterdayLabel);setTxt("footerText",u.footer);setTxt("footerSlogan","CONNECTING PEOPLE CREATING GLOBAL VALUE");
+  setTxt("timebarLabel",u.timebar);u.tabs.forEach((v,i)=>setHTML(`tab${i}`,v));setTxt("globalTopTitle",u.globalTop);setTxt("globalCatTitle",u.globalCats);setTxt("footerText",u.footer);setTxt("footerSlogan","CONNECTING PEOPLE CREATING GLOBAL VALUE");
   renderPulse();
 }
-function toggleLanguage(){lang=lang==="ko"?"en":"ko";localStorage.setItem("kb_brief_lang",lang);updateStatic();buildTimebar();renderBranch();renderSub();renderGlobal();renderYesterday();renderPredict();renderQuiz();renderHookBar();}
-updateStatic();buildTimebar();setInterval(updateTimebar,30000);renderBranch();renderSub();renderGlobal();renderYesterday();renderPredict();renderQuiz();renderHookBar();
+function toggleLanguage(){lang=lang==="ko"?"en":"ko";localStorage.setItem("kb_brief_lang",lang);updateStatic();buildTimebar();renderBranch();renderSub();renderGlobal();renderNetwork();renderHookBar();}
+updateStatic();buildTimebar();setInterval(updateTimebar,30000);renderBranch();renderSub();renderGlobal();renderNetwork();renderHookBar();
 </script>
 
 </body>
