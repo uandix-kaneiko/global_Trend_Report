@@ -320,16 +320,16 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
   <div class="mast-top">
     <div class="mast-brand">
       <span class="mast-kb">KB</span>
-      <span class="mast-star">✱</span>
+      <span class="mast-star">국민은행</span>
     </div>
     <div class="mast-meta">
       <button class="lang-switch" type="button" id="langToggle" onclick="toggleLanguage()">EN</button>
-      <span class="mast-issue" id="mastIssue">제 131호</span>
+      <span class="mast-issue" id="mastIssue">프로타입 제1호</span>
       <span class="mast-date" id="mastDate">2026.06.20 토</span>
     </div>
   </div>
   <h1 class="mast-title" id="mastTitle">글로벌 데일리<br>브리핑</h1>
-  <div class="mast-sub" id="mastSub">전 세계 12개 거점 · KB금융그룹 글로벌</div>
+  <div class="mast-sub" id="mastSub">전 세계 12개 거점 · KB국민은행 글로벌</div>
 </header>
 
 <!-- ━━━━━━━━━━━━━━━━ 2. GLOBAL PULSE ━━━━━━━━━━━━━━━━ -->
@@ -406,7 +406,7 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
 
 <!-- ━━━━━━━━━━━━━━━━ 6. TODAY'S TOP 3 ━━━━━━━━━━━━━━━━ -->
 <section class="headline-section">
-  <div class="hs-slogan" id="topSlogan">CONNECTING PEOPLE CREATING GLOBAL VALUE</div>
+  <div class="hs-slogan" id="topSlogan">Conneting People, Creating Global Value</div>
   <div class="hs-eyebrow">
     <span class="hs-rule"></span>
     <span class="hs-label" id="top3Label">TODAY'S TOP 3</span>
@@ -518,7 +518,7 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
    - KO / EN 전환은 데이터·UI 전체에 적용
 ════════════════════════════════ */
 const REPORT_DATE = "2026-06-20";
-const ISSUE_NO = 131;
+const ISSUE_NO = 1;
 let lang = localStorage.getItem("kb_brief_lang") || "ko";
 const L = (ko, en) => ({ko, en});
 const tx = value => (value && typeof value === "object" && ("ko" in value || "en" in value)) ? (value[lang] || value.ko || value.en) : (value ?? "");
@@ -531,9 +531,9 @@ const CATEGORY = {
   "ESG": L("ESG","ESG")
 };
 const TIER_LABEL = {
-  0: L("Tier 0 · 당국·공식", "Tier 0 · Official"),
-  1: L("Tier 1 · 주요언론", "Tier 1 · Major media"),
-  2: L("Tier 2 · 현지매체", "Tier 2 · Local media")
+  1: L("Tier 1 · 당국·공식", "Tier 1 · Official"),
+  2: L("Tier 2 · 주요언론", "Tier 2 · Major media"),
+  3: L("Tier 3 · 현지매체", "Tier 3 · Local media")
 };
 
 const UI = {
