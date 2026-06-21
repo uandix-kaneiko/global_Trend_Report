@@ -50,17 +50,32 @@ header::after{
 .mast-title{color:#fff;font-size:26px;font-weight:900;letter-spacing:-0.025em;line-height:1;margin-bottom:6px;}
 .mast-sub{color:#7A8FA8;font-size:11px;font-weight:600;letter-spacing:.02em;}
 
+
+/* ━━━ UNIFIED FOUR-SECTION SYSTEM ━━━ */
+.stage-head{display:flex;align-items:flex-start;gap:9px;margin-bottom:12px;}
+.stage-no{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.04em;flex-shrink:0;}
+.stage-copy{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1;padding-top:1px;}
+.stage-title{font-size:13px;font-weight:900;line-height:1.25;letter-spacing:.01em;color:var(--ink);}
+.stage-sub{font-size:10.5px;font-weight:600;line-height:1.4;color:var(--sub);}
+.stage-head-dark{margin-bottom:14px;}
+.stage-head-dark .stage-no{background:var(--gold);color:var(--navy);}
+.stage-head-dark .stage-title{color:#fff;}
+.stage-head-dark .stage-sub{color:rgba(255,255,255,.58);}
+.pulse-scale{display:flex;align-items:center;justify-content:space-between;margin:-1px 36px 9px 56px;font-size:9.5px;font-weight:800;color:var(--sub);letter-spacing:.02em;}
+.pulse-scale .scale-note{font-weight:600;letter-spacing:0;}
+.pulse-note{margin-top:10px;font-size:10.5px;line-height:1.45;color:var(--sub);}
+
 /* ━━━ 2. GLOBAL PULSE ━━━ */
 .pulse-section{background:var(--card);padding:16px 20px;border-bottom:1px solid var(--line);}
-.pulse-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-.pulse-title{font-size:11px;font-weight:900;letter-spacing:.06em;color:var(--ink);}
+.pulse-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:7px;}
+.pulse-title{font-size:13px;font-weight:900;letter-spacing:.01em;color:var(--ink);}
 .pulse-badge{font-size:10px;font-weight:700;color:var(--sub);background:var(--paper);border-radius:3px;padding:2px 7px;}
 .pulse-grid{display:flex;flex-direction:column;gap:7px;}
 .pulse-row{display:flex;align-items:center;gap:10px;}
 .p-cat{font-size:11px;font-weight:700;color:var(--charcoal);width:46px;flex-shrink:0;}
 .p-track{flex:1;background:var(--paper);border-radius:10px;height:7px;overflow:hidden;}
 .p-fill{height:100%;border-radius:10px;transition:width 1s ease;}
-.p-lv{font-size:10.5px;font-weight:800;width:26px;text-align:right;flex-shrink:0;}
+.p-lv{font-size:10px;font-weight:900;width:35px;text-align:right;flex-shrink:0;font-variant-numeric:tabular-nums;}
 
 /* ━━━ 3. EXECUTIVE SUMMARY ━━━ */
 .summary-box{margin:0 20px 0;background:var(--navy);border-radius:0 0 10px 10px;padding:16px;border-top:3px solid var(--gold);}
@@ -278,9 +293,9 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
 
 /* ━━━ 언어 전환 / 원문 링크 ━━━ */
 
-/* ━━━ GLOBAL CONNECTION ━━━ */
+/* ━━━ KB GLOBAL NETWORK ━━━ */
 .network-section{padding:22px 20px 6px;border-top:2px solid var(--line);margin-top:18px;}
-.network-title{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.network-title{margin-bottom:16px;}
 .network-rule{flex:1;height:1px;background:var(--line);}
 .network-label{font-size:11px;font-weight:900;color:var(--charcoal);letter-spacing:.08em;white-space:nowrap;}
 .network-grid{display:flex;flex-direction:column;gap:10px;}
@@ -335,41 +350,55 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
 <!-- ━━━━━━━━━━━━━━━━ 2. GLOBAL PULSE ━━━━━━━━━━━━━━━━ -->
 <section class="pulse-section">
   <div class="pulse-header">
-    <span class="pulse-title" id="pulseTitle">📡 오늘의 글로벌 온도</span>
+    <div class="stage-head" style="margin-bottom:0;">
+      <span class="stage-no">01</span>
+      <div class="stage-copy">
+        <span class="stage-title" id="pulseTitle">오늘의 글로벌 온도</span>
+        <span class="stage-sub" id="pulseSub">주요 이슈의 상대적 주목도를 한눈에 봅니다</span>
+      </div>
+    </div>
     <span class="pulse-badge" id="pulseBadge">2026.06.20 기준</span>
   </div>
+  <div class="pulse-scale"><span>0°C</span><span class="scale-note" id="pulseScaleLabel">이슈 주목도</span><span>100°C</span></div>
   <div class="pulse-grid">
     <div class="pulse-row">
       <span class="p-cat">경제</span>
       <div class="p-track"><div class="p-fill" style="width:88%;background:var(--c-경제)"></div></div>
-      <span class="p-lv" style="color:var(--c-경제)">높음</span>
+      <span class="p-lv" style="color:var(--c-경제)">88°C</span>
     </div>
     <div class="pulse-row">
       <span class="p-cat">금융사고</span>
       <div class="p-track"><div class="p-fill" style="width:72%;background:var(--c-금융사고)"></div></div>
-      <span class="p-lv" style="color:var(--c-금융사고)">주의</span>
+      <span class="p-lv" style="color:var(--c-금융사고)">58°C</span>
     </div>
     <div class="pulse-row">
       <span class="p-cat">금융</span>
       <div class="p-track"><div class="p-fill" style="width:60%;background:var(--c-금융)"></div></div>
-      <span class="p-lv" style="color:var(--c-금융)">보통</span>
+      <span class="p-lv" style="color:var(--c-금융)">72°C</span>
     </div>
     <div class="pulse-row">
       <span class="p-cat">디지털</span>
       <div class="p-track"><div class="p-fill" style="width:50%;background:var(--c-디지털)"></div></div>
-      <span class="p-lv" style="color:var(--c-디지털)">보통</span>
+      <span class="p-lv" style="color:var(--c-디지털)">62°C</span>
     </div>
     <div class="pulse-row">
       <span class="p-cat">ESG</span>
       <div class="p-track"><div class="p-fill" style="width:35%;background:var(--c-ESG)"></div></div>
-      <span class="p-lv" style="color:var(--c-ESG)">낮음</span>
+      <span class="p-lv" style="color:var(--c-ESG)">36°C</span>
     </div>
   </div>
+  <p class="pulse-note" id="pulseNote">막대 길이는 오늘의 이슈 주목도를, 색상은 뉴스 영역을 나타냅니다.</p>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━ 3. EXECUTIVE SUMMARY ━━━━━━━━━━━━━━━━ -->
 <div class="summary-box">
-  <div class="sum-label" id="summaryLabel">EXECUTIVE SUMMARY · 2026.06.20</div>
+  <div class="stage-head stage-head-dark">
+    <span class="stage-no">02</span>
+    <div class="stage-copy">
+      <span class="stage-title" id="summaryLabel">오늘의 핵심 흐름</span>
+      <span class="stage-sub" id="summarySub">주요 시장의 변화를 한 흐름으로 읽습니다</span>
+    </div>
+  </div>
   <div class="sum-bullets">
     <div class="sum-bullet">
       <span class="cat-badge cat-경제" id="summaryCat1">경제</span>
@@ -406,11 +435,12 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
 
 <!-- ━━━━━━━━━━━━━━━━ 6. TODAY'S TOP 3 ━━━━━━━━━━━━━━━━ -->
 <section class="headline-section">
-  <div class="hs-slogan" id="topSlogan">Conneting People, Creating Global Value</div>
-  <div class="hs-eyebrow">
-    <span class="hs-rule"></span>
-    <span class="hs-label" id="top3Label">TODAY'S TOP 3</span>
-    <span class="hs-rule"></span>
+  <div class="stage-head">
+    <span class="stage-no">03</span>
+    <div class="stage-copy">
+      <span class="stage-title" id="top3Label">오늘의 주요 시장 뉴스</span>
+      <span class="stage-sub" id="top3Sub">전 거점이 함께 살펴볼 세 가지 시장 이슈</span>
+    </div>
   </div>
   <div class="headline-1">
     <span class="h1-bg-num">01</span>
@@ -490,12 +520,14 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
   <div id="globalCats"></div>
 </div>
 
-<!-- ━━━━━━━━━━━━━━━━ 9. GLOBAL CONNECTION ━━━━━━━━━━━━━━━━ -->
+<!-- ━━━━━━━━━━━━━━━━ 9. KB GLOBAL NETWORK ━━━━━━━━━━━━━━━━ -->
 <section class="network-section" id="networkAnchor">
-  <div class="network-title">
-    <span class="network-rule"></span>
-    <span class="network-label" id="networkTitle">KB GLOBAL CONNECTION</span>
-    <span class="network-rule"></span>
+  <div class="network-title stage-head">
+    <span class="stage-no">04</span>
+    <div class="stage-copy">
+      <span class="stage-title" id="networkTitle">KB 글로벌 네트워크</span>
+      <span class="stage-sub" id="networkSub">각 거점의 이슈를 공통의 흐름으로 읽습니다</span>
+    </div>
   </div>
   <div class="network-grid">
     <div class="network-card featured" id="oneMarketInsight"></div>
@@ -506,7 +538,7 @@ footer p{font-size:11px;color:var(--sub);line-height:1.7;}
 <!-- ━━━━━━━━━━━━━━━━ 10. FOOTER ━━━━━━━━━━━━━━━━ -->
 <footer>
   <p id="footerText"></p>
-  <div class="footer-slogan"><span id="footerSlogan">Connection People, Creating KB Global Value</span></div>
+  <div class="footer-slogan"><span id="footerSlogan">CONNECTING PEOPLE, CREATING GLOBAL VALUE</span></div>
 </footer>
 </div>
 
@@ -531,17 +563,17 @@ const CATEGORY = {
   "ESG": L("ESG","ESG")
 };
 const TIER_LABEL = {
-  0: L("Tier 0 · 당국·공식", "Tier 0 · Official"),
-  1: L("Tier 1 · 주요언론", "Tier 1 · Major media"),
-  2: L("Tier 2 · 현지매체", "Tier 2 · Local media")
+  0: L("금융당국·공식자료", "Financial authorities & official sources"),
+  1: L("주요 매체", "Major media"),
+  2: L("현지 매체", "Local media")
 };
 
 const UI = {
   ko: {
     title:"KB 글로벌 데일리 브리핑", issue:"제 95호", date:"2026.06.20 토",
-    mastTitle:"글로벌 데일리<br>브리핑", mastSub:"전 세계 12개 거점 · 하나의 KB 글로벌 금융 네트워크",
-    pulseTitle:"📡 오늘의 글로벌 관심 이슈", pulseBadge:"2026.06.20 기준",
-    summaryLabel:"GLOBAL CONNECT · 2026.06.20",
+    mastTitle:"글로벌 데일리<br>브리핑", mastSub:"전 세계 12개 거점 · 연결된 KB 글로벌 금융 네트워크",
+    pulseTitle:"오늘의 글로벌 온도", pulseSub:"주요 이슈의 상대적 주목도를 한눈에 봅니다", pulseScaleLabel:"이슈 주목도", pulseNote:"막대 길이는 오늘의 이슈 주목도를, 색상은 뉴스 영역을 나타냅니다.", pulseBadge:"2026.06.20 기준",
+    summaryLabel:"오늘의 핵심 흐름", summarySub:"주요 시장의 변화를 한 흐름으로 읽습니다",
     summary:[
       ["경제","BOJ 인상과 Fed·BOE 동결은 동경·뉴욕·런던의 통화정책 변화가 하나의 글로벌 자금흐름으로 연결되고 있음을 보여줍니다."],
       ["금융","달러·파운드·엔화의 금리 환경은 각 거점의 현지 시장을 넘어, 아시아와 국제 금융허브 간 조달 여건을 함께 형성합니다."],
@@ -549,7 +581,7 @@ const UI = {
       ["금융사고","인도의 소비자보호 규제 변화는 모든 거점이 디지털 채널에서 고객 신뢰를 어떻게 지켜갈지 함께 생각하게 하는 사례입니다."]
     ],
     big:{eyebrow:"이 주의 숫자",number:"1.00%",unit:"BOJ 정책금리",desc:"일본은행, 6월 16일 25bp 인상",context:"동경의 금리 정상화는 홍콩·싱가포르를 포함한 아시아 금융허브의 자금흐름을 함께 바라보게 하는 기준점이 됩니다."},
-    top3Label:"TODAY'S GLOBAL CONNECTORS",
+    top3Label:"Market Highlights", top3Sub:"Three market stories shared across our locations",
     top:[
       {cat:"경제",country:"🇯🇵 동경 · Bank of Japan",title:"일본은행, 정책금리 1.00%로 인상 — 31년 만의 최고 수준",lead:"6월 16일 7대1로 25bp 인상. 에너지발 물가와 엔화 약세가 통화정책 정상화의 핵심 변수로 부상."},
       {cat:"경제",country:"🇺🇸 뉴욕 · Federal Reserve",title:"연준 동결, 연내 인상 가능성 시사 — 달러·미 국채금리 상승",lead:"6월 FOMC는 금리를 유지했지만, 물가 불확실성과 정책기대 변화가 자금조달·환리스크를 재점검하게 합니다."},
@@ -558,20 +590,20 @@ const UI = {
     timebar:"실시간 거점 현황",
     tabs:["<span class='tab-icon'>🌏</span>진출국가","<span class='tab-icon'>🏦</span>국외연결<br>자회사","<span class='tab-icon'>📡</span>글로벌<br>동향"],
     globalTop:"🌐 전 거점이 함께 보는 글로벌 TOP 5", globalCats:"거점 간 연결 동향",
-    networkTitle:"KB GLOBAL CONNECTION", oneMarket:"ONE MARKET, ONE INSIGHT", networkPulse:"OUR NETWORK PULSE",
+    networkTitle:"KB Global Network", networkSub:"A shared view across our global locations", oneMarket:"Market Insight", networkPulse:"Network Focus",
     footer:"본 브리핑은 2026년 6월 20일 기준 각국 중앙은행·금융당국 및 주요 언론의 공개자료를 바탕으로, KB 글로벌 네트워크가 같은 시장 흐름을 함께 읽을 수 있도록 구성한 데일리 뉴스입니다. 원문보기는 해당 공개자료 또는 기사로 연결됩니다.",
-    link:"원문 보기 →", implication:"Across KB Global", source:"출처",
+    link:"원문 보기 →", implication:"글로벌 연결 포인트", source:"출처",
     globalTopPrefix:"오늘의 글로벌 TOP 5", categoryTrend:"동향", noImplication:"",
     pulse:[
-      ["경제","주목",88,"경제"],["금융","주목",72,"금융"],["디지털","관찰",62,"디지털"],
-      ["금융사고","레이더",58,"금융사고"],["ESG","관찰",36,"ESG"]
+      ["경제",88,"경제"],["금융",72,"금융"],["디지털",62,"디지털"],
+      ["금융사고",58,"금융사고"],["ESG",36,"ESG"]
     ]
   },
   en: {
     title:"KB Global Daily Briefing", issue:"No. 131", date:"Sat, 20 Jun 2026",
-    mastTitle:"Global Daily<br>Briefing", mastSub:"12 global locations · one connected KB global financial network",
-    pulseTitle:"📡 Today’s Global Pulse", pulseBadge:"As of 20 Jun 2026",
-    summaryLabel:"GLOBAL CONNECT · 20 JUN 2026",
+    mastTitle:"Global Daily<br>Briefing", mastSub:"12 global locations · a connected KB global financial network",
+    pulseTitle:"Global Pulse", pulseSub:"A concise view of the relative attention around today’s topics", pulseScaleLabel:"Topic attention", pulseNote:"Bar length shows relative topic attention; colour distinguishes the news category.", pulseBadge:"As of 20 Jun 2026",
+    summaryLabel:"Global Brief", summarySub:"Reading major market developments as one shared flow",
     summary:[
       ["경제","The BOJ hike and Fed–BoE holds show how policy moves in Tokyo, New York and London are converging into one global funding narrative."],
       ["금융","USD, GBP and JPY conditions shape not only local markets but also the shared funding environment across Asian and international financial hubs."],
@@ -579,7 +611,7 @@ const UI = {
       ["금융사고","India’s consumer-protection shift is a useful shared reference for how every location can sustain trust in digital channels."]
     ],
     big:{eyebrow:"NUMBER OF THE WEEK",number:"1.00%",unit:"BOJ policy rate",desc:"Bank of Japan: 25bp increase on 16 June",context:"Tokyo’s policy normalisation is a shared reference point for funding conditions and capital flows across Asian financial hubs."},
-    top3Label:"TODAY'S GLOBAL CONNECTORS",
+    top3Label:"Market Highlights", top3Sub:"Three market stories shared across our locations",
     top:[
       {cat:"경제",country:"🇯🇵 Tokyo · Bank of Japan",title:"BOJ raises policy rate to 1.00% — the highest in 31 years",lead:"A 7–1 decision on 16 June lifted the rate by 25bp. Energy-driven inflation and a weak yen remain key normalisation variables."},
       {cat:"경제",country:"🇺🇸 New York · Federal Reserve",title:"Fed holds, signals possibility of a 2026 hike — dollar and Treasury yields rise",lead:"June FOMC kept rates unchanged, but inflation uncertainty and shifting policy expectations warrant a renewed review of funding and FX risk."},
@@ -588,13 +620,13 @@ const UI = {
     timebar:"LIVE LOCATION CLOCK", 
     tabs:["<span class='tab-icon'>🌏</span>Branches","<span class='tab-icon'>🏦</span>Overseas<br>Subsidiaries","<span class='tab-icon'>📡</span>Global<br>Trends"],
     globalTop:"🌐 GLOBAL TOP 5 ACROSS OUR MARKETS", globalCats:"CONNECTED TRENDS BY CATEGORY",
-    networkTitle:"KB GLOBAL CONNECTION", oneMarket:"ONE MARKET, ONE INSIGHT", networkPulse:"OUR NETWORK PULSE",
+    networkTitle:"KB Global Network", networkSub:"A shared view across our global locations", oneMarket:"Market Insight", networkPulse:"Network Focus",
     footer:"This daily briefing brings together publicly available material from central banks, financial authorities and major media as of 20 June 2026, helping the KB global network read the same market movements together. ‘View source’ opens the underlying public release or article.",
-    link:"View source →", implication:"Across KB Global", source:"Source",
+    link:"View source →", implication:"Network Connection", source:"Source",
     globalTopPrefix:"GLOBAL TOP 5", categoryTrend:"trend", noImplication:"",
     pulse:[
-      ["경제","Hot",88,"경제"],["금융","Hot",72,"금융"],["디지털","On radar",62,"디지털"],
-      ["금융사고","Watch",58,"금융사고"],["ESG","On radar",36,"ESG"]
+      ["경제",88,"경제"],["금융",72,"금융"],["디지털",62,"디지털"],
+      ["금융사고",58,"금융사고"],["ESG",36,"ESG"]
     ]
   }
 };
@@ -962,13 +994,13 @@ function renderGlobal(){
 function toggleCat(i){document.getElementById("ch"+i).classList.toggle("open");document.getElementById("cb"+i).classList.toggle("open");}
 function switchMain(idx){document.querySelectorAll(".main-tab").forEach((t,i)=>t.classList.toggle("active",i===idx));document.querySelectorAll(".panel").forEach((p,i)=>p.classList.toggle("visible",i===idx));}
 
-/* ── KB Global Connection ── */
+/* ── KB Global Network ── */
 const NETWORK_KEY=REPORT_DATE;
 const NETWORK = {
   market:L("🇯🇵 동경","🇯🇵 Tokyo"),
   title:L("BOJ의 금리 정상화는 아시아 금융허브의 공통 화두가 되었습니다.","BOJ normalisation has become a shared conversation across Asian financial hubs."),
   body:L("동경의 1.00% 금리 인상은 일본만의 뉴스가 아닙니다. 엔화 조달·환율·채권시장에 대한 인식이 홍콩과 싱가포르를 포함한 아시아 금융시장의 대화로 이어지고 있습니다.","Tokyo's move to 1.00% is more than a Japan story. It is shaping a shared conversation on yen funding, FX and bond markets across Asian financial centres, including Hong Kong and Singapore."),
-  bridge:L("동경의 변화가 뉴욕·런던의 긴축 경계와 만나면서, 각 거점은 서로 다른 시장의 이야기를 하나의 글로벌 금융 흐름으로 읽게 됩니다.","When Tokyo's shift meets inflation vigilance in New York and London, locations can read different local stories as one connected global-finance narrative."),
+  bridge:L("동경의 변화가 뉴욕·런던의 긴축 경계와 만나면서, 각 거점은 서로 다른 시장의 이야기를 공통의 글로벌 금융 흐름으로 읽게 됩니다.","When Tokyo's shift meets inflation vigilance in New York and London, locations can read different local stories as one connected global-finance narrative."),
   question:L("이번 주, 가장 관심 있게 보고 있는 글로벌 금융 변화는 무엇인가요?","Which global-finance development is most on your radar this week?"),
   options:[
     L("주요국 통화정책과 자금조달 환경","Major-central-bank policy and funding conditions"),
@@ -980,12 +1012,12 @@ function smoothToNetwork(){setTimeout(()=>{const el=document.getElementById("net
 function renderHookBar(){
   const selected=localStorage.getItem("kb_network_pulse_"+NETWORK_KEY);
   const status=selected===null ? (lang==="ko"?"이번 주 관심 주제 남기기 →":"Share your focus this week →") : (lang==="ko"?"내 관심 주제 저장됨":"Your focus is saved");
-  document.getElementById("hookBar").innerHTML=`<a class="hook-cell" href="#networkAnchor" onclick="smoothToNetwork()"><span class="hk-icon">🌐</span><span class="hk-text"><span class="hk-title">${lang==="ko"?"ONE MARKET, ONE INSIGHT":"ONE MARKET, ONE INSIGHT"}</span><span class="hk-val">${esc(tx(NETWORK.market))} · ${lang==="ko"?"아시아 자금흐름":"Asian funding flows"}</span></span><span class="hk-arrow">↓</span></a><a class="hook-cell" href="#networkAnchor" onclick="smoothToNetwork()"><span class="hk-icon">🔗</span><span class="hk-text"><span class="hk-title">${lang==="ko"?"OUR NETWORK PULSE":"OUR NETWORK PULSE"}</span><span class="hk-val">${status}</span></span><span class="hk-arrow">↓</span></a>`;
+  document.getElementById("hookBar").innerHTML=`<a class="hook-cell" href="#networkAnchor" onclick="smoothToNetwork()"><span class="hk-icon">🌐</span><span class="hk-text"><span class="hk-title">${esc(UI[lang].oneMarket)}</span><span class="hk-val">${esc(tx(NETWORK.market))} · ${lang==="ko"?"아시아 자금흐름":"Asian funding flows"}</span></span><span class="hk-arrow">↓</span></a><a class="hook-cell" href="#networkAnchor" onclick="smoothToNetwork()"><span class="hk-icon">🔗</span><span class="hk-text"><span class="hk-title">${esc(UI[lang].networkPulse)}</span><span class="hk-val">${status}</span></span><span class="hk-arrow">↓</span></a>`;
 }
 function renderNetwork(){
   const selected=localStorage.getItem("kb_network_pulse_"+NETWORK_KEY);
   document.getElementById("networkTitle").textContent=UI[lang].networkTitle;
-  document.getElementById("oneMarketInsight").innerHTML=`<div class="network-kicker">${UI[lang].oneMarket}</div><div class="network-market"><span>${esc(tx(NETWORK.market).split(" ")[0])}</span><span class="network-market-name">${esc(tx(NETWORK.market).replace(/^\S+\s*/,""))}</span></div><div class="network-headline">${esc(tx(NETWORK.title))}</div><div class="network-copy">${esc(tx(NETWORK.body))}</div><div class="network-bridge"><strong>Across KB Global</strong> · ${esc(tx(NETWORK.bridge))}</div>`;
+  document.getElementById("oneMarketInsight").innerHTML=`<div class="network-kicker">${UI[lang].oneMarket}</div><div class="network-market"><span>${esc(tx(NETWORK.market).split(" ")[0])}</span><span class="network-market-name">${esc(tx(NETWORK.market).replace(/^\S+\s*/,""))}</span></div><div class="network-headline">${esc(tx(NETWORK.title))}</div><div class="network-copy">${esc(tx(NETWORK.body))}</div><div class="network-bridge"><strong>${esc(UI[lang].implication)}</strong> · ${esc(tx(NETWORK.bridge))}</div>`;
   const opts=NETWORK.options.map((o,i)=>`<button class="network-btn${selected===String(i)?" selected":""}" ${selected!==null?"disabled":""} onclick="saveNetworkPulse(${i})">${esc(tx(o))}</button>`).join("");
   const note=selected===null ? (lang==="ko"?"선택 내용은 이 브라우저에만 저장됩니다. 전체 참여 수는 표시하지 않습니다.":"Your choice is saved only in this browser. No network-wide participation count is displayed.") : (lang==="ko"?"내 관심 주제가 저장되었습니다. 다른 거점의 이슈를 살펴보며 오늘의 글로벌 흐름을 이어가세요.":"Your focus has been saved. Explore other locations to continue today’s global conversation.");
   document.getElementById("networkPulse").innerHTML=`<div class="network-kicker">${UI[lang].networkPulse}</div><div class="network-pulse-title">${esc(tx(NETWORK.question))}</div><div class="network-opts">${opts}</div><div class="network-note">${note}</div>`;
@@ -995,16 +1027,16 @@ function saveNetworkPulse(idx){localStorage.setItem("kb_network_pulse_"+NETWORK_
 function setTxt(id,value){const el=document.getElementById(id);if(el)el.textContent=value;}
 function setHTML(id,value){const el=document.getElementById(id);if(el)el.innerHTML=value;}
 function renderPulse(){
-  const rows=UI[lang].pulse.map(([cat,level,width,cssCat])=>`<div class="pulse-row"><span class="p-cat">${esc(catName(cat))}</span><div class="p-track"><div class="p-fill" style="width:${width}%;background:var(--c-${cssCat})"></div></div><span class="p-lv" style="color:var(--c-${cssCat})">${esc(level)}</span></div>`).join("");
+  const rows=UI[lang].pulse.map(([cat,width,cssCat])=>`<div class="pulse-row"><span class="p-cat">${esc(catName(cat))}</span><div class="p-track"><div class="p-fill" style="width:${width}%;background:var(--c-${cssCat})"></div></div><span class="p-lv" style="color:var(--c-${cssCat})">${width}°C</span></div>`).join("");
   document.querySelector(".pulse-grid").innerHTML=rows;
 }
 function updateStatic(){
   const u=UI[lang];document.documentElement.lang=lang;document.title=u.title;document.getElementById("langToggle").textContent=lang==="ko"?"EN":"한국어";
-  setTxt("mastIssue",u.issue);setTxt("mastDate",u.date);setHTML("mastTitle",u.mastTitle);setTxt("mastSub",u.mastSub);setTxt("pulseTitle",u.pulseTitle);setTxt("pulseBadge",u.pulseBadge);setTxt("summaryLabel",u.summaryLabel);
+  setTxt("mastIssue",u.issue);setTxt("mastDate",u.date);setHTML("mastTitle",u.mastTitle);setTxt("mastSub",u.mastSub);setTxt("pulseTitle",u.pulseTitle);setTxt("pulseSub",u.pulseSub);setTxt("pulseScaleLabel",u.pulseScaleLabel);setTxt("pulseNote",u.pulseNote);setTxt("pulseBadge",u.pulseBadge);setTxt("summaryLabel",u.summaryLabel);setTxt("summarySub",u.summarySub);
   u.summary.forEach((v,i)=>{setTxt(`summaryCat${i+1}`,catName(v[0]));setTxt(`summaryText${i+1}`,v[1]);});
   setTxt("bnEyebrow",u.big.eyebrow);setTxt("bnNumber",u.big.number);setTxt("bnUnit",u.big.unit);setTxt("bnDesc",u.big.desc);setTxt("bnContext",u.big.context);
-  setTxt("top3Label",u.top3Label);u.top.forEach((x,i)=>{setTxt(`top${i+1}Cat`,catName(x.cat));setTxt(`top${i+1}Country`,x.country);setTxt(`top${i+1}Title`,x.title);if(i===0)setTxt("top1Lead",x.lead);});
-  setTxt("timebarLabel",u.timebar);u.tabs.forEach((v,i)=>setHTML(`tab${i}`,v));setTxt("globalTopTitle",u.globalTop);setTxt("globalCatTitle",u.globalCats);setTxt("footerText",u.footer);setTxt("footerSlogan","CONNECTING PEOPLE CREATING GLOBAL VALUE");
+  setTxt("top3Label",u.top3Label);setTxt("top3Sub",u.top3Sub);u.top.forEach((x,i)=>{setTxt(`top${i+1}Cat`,catName(x.cat));setTxt(`top${i+1}Country`,x.country);setTxt(`top${i+1}Title`,x.title);if(i===0)setTxt("top1Lead",x.lead);});
+  setTxt("timebarLabel",u.timebar);u.tabs.forEach((v,i)=>setHTML(`tab${i}`,v));setTxt("globalTopTitle",u.globalTop);setTxt("globalCatTitle",u.globalCats);setTxt("networkSub",u.networkSub);setTxt("footerText",u.footer);setTxt("footerSlogan","CONNECTING PEOPLE CREATING GLOBAL VALUE");
   renderPulse();
 }
 function toggleLanguage(){lang=lang==="ko"?"en":"ko";localStorage.setItem("kb_brief_lang",lang);updateStatic();buildTimebar();renderBranch();renderSub();renderGlobal();renderNetwork();renderHookBar();}
